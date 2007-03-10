@@ -1,0 +1,6 @@
+EN pixel_clock_borne NULL C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/pixel_clock_borne.vhd sub00/vhpl01 1172162793
+AR ivga imp C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/ivga.vhd sub00/vhpl05 1172315963
+EN ivga NULL C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/ivga.vhd sub00/vhpl00 1172315962
+AR pixel_clock_vga behavioral C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/pixel_clock_vga.vhd sub00/vhpl04 1172162796
+AR pixel_clock_borne behavioral C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/pixel_clock_borne.vhd sub00/vhpl02 1172162794
+EN pixel_clock_vga NULL C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/pixel_clock_vga.vhd sub00/vhpl03 1172162795

@@ -1,0 +1,15 @@
+##############################################################################
+## Filename:          /home/teixeiro/igam/Asgard/drivers/idma_v1_00_a/data/idma_v2_1_0.mdd
+## Description:       Microprocessor Driver Definition
+## Date:              Mon May 29 16:13:39 2006 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+OPTION psf_version = 2.1.0;
+
+BEGIN DRIVER idma
+
+  OPTION supported_peripherals = (idma);
+  OPTION depends = (common_v1_00_a);
+  OPTION copyfiles = all;
+
+END DRIVER

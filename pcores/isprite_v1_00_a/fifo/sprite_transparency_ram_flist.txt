@@ -1,0 +1,6 @@
+# Output products list for <sprite_transparency_ram>
+sprite_transparency_ram.ngc
+sprite_transparency_ram.vhd
+sprite_transparency_ram.vho
+sprite_transparency_ram.xco
+sprite_transparency_ram_flist.txt

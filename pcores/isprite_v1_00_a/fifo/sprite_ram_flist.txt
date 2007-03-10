@@ -1,0 +1,6 @@
+# Output products list for <sprite_ram>
+sprite_ram.ngc
+sprite_ram.vhd
+sprite_ram.vho
+sprite_ram.xco
+sprite_ram_flist.txt

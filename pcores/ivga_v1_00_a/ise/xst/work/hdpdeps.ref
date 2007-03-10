@@ -1,0 +1,22 @@
+V3 13
+FL C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/ivga.vhd 2007/02/24.20:19:20 I.27
+EN work/ivga 1172315962            FL C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/ivga.vhd \
+      PB ieee/std_logic_1164 1140839709 PB ieee/std_logic_arith 1140839711 \
+      PB ieee/STD_LOGIC_UNSIGNED 1140839715
+AR work/ivga/IMP 1172315963 \
+      FL C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/ivga.vhd \
+      EN work/ivga 1172315962 CP pixel_fifo
+FL C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/pixel_clock_vga.vhd 2007/02/22.22:39:51 I.27
+EN work/pixel_clock_vga 1172162795 \
+      FL C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/pixel_clock_vga.vhd \
+      PB ieee/std_logic_1164 1140839709 PH ieee/NUMERIC_STD 1140839720
+AR work/pixel_clock_vga/BEHAVIORAL 1172162796 \
+      FL C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/pixel_clock_vga.vhd \
+      EN work/pixel_clock_vga 1172162795 CP BUFG CP IBUFG    CP DCM
+FL C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/pixel_clock_borne.vhd 2007/02/22.22:39:21 I.27
+EN work/pixel_clock_borne 1172162793 \
+      FL C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/pixel_clock_borne.vhd \
+      PB ieee/std_logic_1164 1140839709 PH ieee/NUMERIC_STD 1140839720
+AR work/pixel_clock_borne/BEHAVIORAL 1172162794 \
+      FL C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/pixel_clock_borne.vhd \
+      EN work/pixel_clock_borne 1172162793 CP BUFG CP IBUFG  CP DCM

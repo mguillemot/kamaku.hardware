@@ -1,0 +1,6 @@
+# Output products list for <fifo_generator_v2_3>
+fifo_generator_v2_3.xco
+fifo_generator_v2_3.vhd
+fifo_generator_v2_3_flist.txt
+fifo_generator_v2_3.vho
+fifo_generator_v2_3.ngc

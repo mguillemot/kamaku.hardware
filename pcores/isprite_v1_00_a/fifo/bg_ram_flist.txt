@@ -1,0 +1,6 @@
+# Output products list for <bg_ram>
+bg_ram.ngc
+bg_ram.vhd
+bg_ram.vho
+bg_ram.xco
+bg_ram_flist.txt

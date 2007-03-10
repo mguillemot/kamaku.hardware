@@ -1,0 +1,654 @@
+Release 8.1.03i - xst I.27
+Copyright (c) 1995-2005 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to ./xst/projnav.tmp
+CPU : 0.00 / 0.25 s | Elapsed : 0.00 / 0.00 s
+ 
+--> Parameter xsthdpdir set to ./xst
+CPU : 0.00 / 0.25 s | Elapsed : 0.00 / 0.00 s
+ 
+--> Reading design: ivga.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) HDL Analysis
+  4) HDL Synthesis
+     4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+     5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Final Report
+     7.1) Device utilization summary
+     7.2) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "ivga.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "ivga"
+Output Format                      : NGC
+Target Device                      : xc2vp30-7-ff896
+
+---- Source Options
+Top Module Name                    : ivga
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+FSM Style                          : lut
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : YES
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : YES
+Resource Sharing                   : YES
+Multiplier Style                   : auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Slice Packing                      : YES
+Pack IO Registers into IOBs        : auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : NO
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Write Timing Constraints           : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+Slice Utilization Ratio            : 100
+Slice Utilization Ratio Delta      : 5
+
+---- Other Options
+lso                                : ivga.lso
+Read Cores                         : YES
+cross_clock_analysis               : NO
+verilog2001                        : YES
+safe_implementation                : No
+Optimize Instantiated Primitives   : NO
+tristate2logic                     : Yes
+use_clock_enable                   : Yes
+use_sync_set                       : Yes
+use_sync_reset                     : Yes
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/ivga.vhd" in Library work.
+Entity <ivga> compiled.
+Entity <ivga> (Architecture <imp>) compiled.
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <ivga> (Architecture <imp>).
+WARNING:Xst:753 - "C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/ivga.vhd" line 363: Unconnected output port 'empty' of component 'pixel_fifo'.
+WARNING:Xst:753 - "C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/ivga.vhd" line 363: Unconnected output port 'full' of component 'pixel_fifo'.
+WARNING:Xst:766 - "C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/ivga.vhd" line 363: Generating a Black Box for component <pixel_fifo>.
+Entity <ivga> analyzed. Unit <ivga> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+INFO:Xst:1304 - Contents of register <slave_slice> in unit <ivga> never changes during circuit operation. The register is replaced by logic.
+
+Synthesizing Unit <ivga>.
+    Related source file is "C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/ivga.vhd".
+WARNING:Xst:647 - Input <PLB_pendPri> is never used.
+WARNING:Xst:1306 - Output <Sl_rearbitrate> is never assigned.
+WARNING:Xst:647 - Input <PLB_wrPrim> is never used.
+WARNING:Xst:647 - Input <PLB_MSize> is never used.
+WARNING:Xst:1306 - Output <Sl_MErr> is never assigned.
+WARNING:Xst:647 - Input <PLB_MWrBTerm> is never used.
+WARNING:Xst:647 - Input <PLB_MWrDAck> is never used.
+WARNING:Xst:1306 - Output <Sl_wrBTerm> is never assigned.
+WARNING:Xst:647 - Input <PLB_rdBurst> is never used.
+WARNING:Xst:647 - Input <PLB_masterID> is never used.
+WARNING:Xst:647 - Input <PLB_SAValid> is never used.
+WARNING:Xst:647 - Input <PLB_PAValid> is never used.
+WARNING:Xst:647 - Input <PLB_size> is never used.
+WARNING:Xst:647 - Input <PLB_MRdWdAddr> is never used.
+WARNING:Xst:647 - Input <PLB_guarded> is never used.
+WARNING:Xst:647 - Input <PLB_busLock> is never used.
+WARNING:Xst:647 - Input <PLB_MBusy> is never used.
+WARNING:Xst:1306 - Output <Sl_SSize> is never assigned.
+WARNING:Xst:1306 - Output <M_wrDBus> is never assigned.
+WARNING:Xst:647 - Input <PLB_MSSize> is never used.
+WARNING:Xst:647 - Input <PLB_wrDBus<0:31>> is never used.
+WARNING:Xst:647 - Input <PLB_BE> is never used.
+WARNING:Xst:1306 - Output <Sl_MBusy> is never assigned.
+WARNING:Xst:647 - Input <PLB_reqPri> is never used.
+WARNING:Xst:647 - Input <PLB_lockErr> is never used.
+WARNING:Xst:647 - Input <VGA_PixelClock_Borne> is never used.
+WARNING:Xst:1306 - Output <Sl_rdWdAddr> is never assigned.
+WARNING:Xst:647 - Input <PLB_MRdBTerm> is never used.
+WARNING:Xst:647 - Input <PLB_wrBurst> is never used.
+WARNING:Xst:647 - Input <PLB_ordered> is never used.
+WARNING:Xst:1306 - Output <VGA_DEBUG> is never assigned.
+WARNING:Xst:647 - Input <PLB_compress> is never used.
+WARNING:Xst:1306 - Output <Sl_rdBTerm> is never assigned.
+WARNING:Xst:647 - Input <PLB_rdPrim> is never used.
+WARNING:Xst:647 - Input <PLB_MRearbitrate> is never used.
+WARNING:Xst:647 - Input <PLB_ABus> is never used.
+WARNING:Xst:647 - Input <PLB_abort> is never used.
+WARNING:Xst:647 - Input <VGA_PixelClock_VGA> is never used.
+WARNING:Xst:647 - Input <PLB_MErr> is never used.
+WARNING:Xst:647 - Input <PLB_type> is never used.
+WARNING:Xst:647 - Input <PLB_pendReq> is never used.
+WARNING:Xst:646 - Signal <x320> is assigned but never used.
+WARNING:Xst:646 - Signal <y640> is assigned but never used.
+WARNING:Xst:646 - Signal <x640> is assigned but never used.
+WARNING:Xst:646 - Signal <slave_slice<0:27>> is assigned but never used.
+WARNING:Xst:646 - Signal <slave_slice<29:31>> is assigned but never used.
+WARNING:Xst:646 - Signal <y320> is assigned but never used.
+INFO:Xst:1799 - State slave_read is never reached in FSM <vga_slave_state_current>.
+INFO:Xst:1799 - State slave_write is never reached in FSM <vga_slave_state_current>.
+INFO:Xst:1799 - State slave_addack is never reached in FSM <vga_slave_state_current>.
+INFO:Xst:1799 - State slave_read2 is never reached in FSM <vga_slave_state_current>.
+INFO:Xst:1799 - State slave_write2 is never reached in FSM <vga_slave_state_current>.
+    Found finite state machine <FSM_0> for signal <vga_slave_state_current>.
+    -----------------------------------------------------------------------
+    | States             | 1                                              |
+    | Transitions        | 1                                              |
+    | Inputs             | 1                                              |
+    | Outputs            | 1                                              |
+    | Clock              | PLB_Clk (rising_edge)                          |
+    | Reset              | PLB_Rst (positive)                             |
+    | Reset type         | synchronous                                    |
+    | Reset State        | slave_idle                                     |
+    | Power Up State     | slave_idle                                     |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found finite state machine <FSM_1> for signal <vga_master_state_current>.
+    -----------------------------------------------------------------------
+    | States             | 5                                              |
+    | Transitions        | 9                                              |
+    | Inputs             | 4                                              |
+    | Outputs            | 7                                              |
+    | Clock              | PLB_Clk (rising_edge)                          |
+    | Reset              | PLB_Rst (positive)                             |
+    | Reset type         | synchronous                                    |
+    | Reset State        | master_idle                                    |
+    | Power Up State     | master_idle                                    |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 4x1-bit ROM for signal <Vsync320>.
+    Found 4x1-bit ROM for signal <Hsync640>.
+    Found 4x1-bit ROM for signal <Vsync640>.
+    Found 4x1-bit ROM for signal <Hsync320>.
+    Found 1-bit register for signal <VGA_INTERRUPT>.
+    Found 32-bit adder for signal <$n0064> created at line 763.
+    Found 32-bit adder for signal <$n0065> created at line 693.
+    Found 10-bit comparator less for signal <$n0068> created at line 724.
+    Found 10-bit comparator less for signal <$n0069> created at line 727.
+    Found 10-bit comparator less for signal <$n0071> created at line 773.
+    Found 10-bit comparator less for signal <$n0072> created at line 776.
+    Found 10-bit comparator less for signal <$n0073> created at line 794.
+    Found 10-bit comparator less for signal <$n0074> created at line 797.
+    Found 10-bit comparator less for signal <$n0075> created at line 703.
+    Found 10-bit comparator less for signal <$n0076> created at line 706.
+    Found 10-bit comparator less for signal <$n0079> created at line 801.
+    Found 10-bit comparator less for signal <$n0080> created at line 710.
+    Found 10-bit comparator less for signal <$n0081> created at line 731.
+    Found 10-bit comparator less for signal <$n0082> created at line 780.
+    Found 10-bit comparator greatequal for signal <$n0083> created at line 761.
+    Found 10-bit comparator less for signal <$n0088> created at line 677.
+    Found 10-bit comparator greatequal for signal <$n0090> created at line 691.
+    Found 10-bit comparator less for signal <$n0091> created at line 684.
+    Found 11-bit comparator less for signal <$n0092> created at line 747.
+    Found 10-bit comparator greatequal for signal <$n0094> created at line 761.
+    Found 10-bit comparator less for signal <$n0095> created at line 761.
+    Found 11-bit comparator less for signal <$n0098> created at line 754.
+    Found 10-bit comparator less for signal <$n0099> created at line 647.
+    Found 5-bit up counter for signal <ClkCpt>.
+    Found 10-bit up counter for signal <cmptHsync320>.
+    Found 10-bit up counter for signal <cmptHsync640>.
+    Found 10-bit up counter for signal <cmptVsync320>.
+    Found 10-bit up counter for signal <cmptVsync640>.
+    Found 32-bit register for signal <current_line320>.
+    Found 32-bit register for signal <current_line640>.
+    Found 10-bit up accumulator for signal <pixel_count>.
+    Found 1-bit register for signal <start_read_line320>.
+    Found 1-bit register for signal <start_read_line640>.
+    Found 32-bit register for signal <vga_base_address>.
+    Found 32-bit register for signal <vga_control_reg>.
+    Summary:
+	inferred   2 Finite State Machine(s).
+	inferred   4 ROM(s).
+	inferred   5 Counter(s).
+	inferred   1 Accumulator(s).
+	inferred 131 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred  21 Comparator(s).
+Unit <ivga> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 4
+ 4x1-bit ROM                                           : 4
+# Adders/Subtractors                                   : 2
+ 32-bit adder                                          : 2
+# Counters                                             : 5
+ 10-bit up counter                                     : 4
+ 5-bit up counter                                      : 1
+# Accumulators                                         : 1
+ 10-bit up accumulator                                 : 1
+# Registers                                            : 7
+ 1-bit register                                        : 3
+ 32-bit register                                       : 4
+# Comparators                                          : 21
+ 10-bit comparator greatequal                          : 3
+ 10-bit comparator less                                : 16
+ 11-bit comparator less                                : 2
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_1> for best encoding.
+Optimizing FSM <vga_master_state_current> on signal <vga_master_state_current[1:3]> with sequential encoding.
+--------------------------
+ State        | Encoding
+--------------------------
+ master_idle  | 000
+ master_radd  | 001
+ master_read1 | 010
+ master_read2 | 011
+ master_wait  | 100
+--------------------------
+WARNING:Xst:1293 - FF/Latch  <vga_base_address_18> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_19> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_20> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_21> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_22> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_23> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_24> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_25> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_26> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_27> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_28> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_29> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_30> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_31> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_control_reg_0> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_control_reg_1> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_control_reg_2> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_0> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_1> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_2> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_3> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_4> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_5> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_6> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_7> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_8> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_9> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_10> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_11> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_12> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_13> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_14> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_15> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_16> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <vga_base_address_17> has a constant value of 0 in block <ivga>.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch  <VGA_INTERRUPT> (without init value) has a constant value of 0 in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_3> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_4> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_5> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_6> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_7> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_8> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_9> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_10> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_11> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_12> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_13> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_14> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_15> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_16> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_17> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_18> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_19> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_20> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_21> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_22> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_23> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_24> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_25> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_26> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_27> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_28> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_29> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_30> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <vga_control_reg_31> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_0> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_1> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_2> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_3> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_4> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_5> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_6> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_7> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_8> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_9> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_10> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_11> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_12> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_13> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_14> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_15> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_16> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_17> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_18> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_19> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_20> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_21> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_22> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_23> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_24> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_25> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_26> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_27> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_28> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_29> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_30> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <current_line640_31> is unconnected in block <ivga>.
+WARNING:Xst:1291 - FF/Latch <start_read_line640> is unconnected in block <ivga>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 1
+# Adders/Subtractors                                   : 1
+ 32-bit adder                                          : 1
+# Counters                                             : 3
+ 10-bit up counter                                     : 2
+ 5-bit up counter                                      : 1
+# Accumulators                                         : 1
+ 10-bit up accumulator                                 : 1
+# Registers                                            : 36
+ Flip-Flops                                            : 36
+# Comparators                                          : 9
+ 10-bit comparator greatequal                          : 1
+ 10-bit comparator less                                : 8
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1988 - Unit <ivga>: instances <Mcompar__n0081>, <Mcompar__n0090> of unit <LPM_COMPARE_10> and unit <LPM_COMPARE_14> are dual, second instance is removed
+Loading device for application Rf_Device from file '2vp30.nph' in environment C:\Xilinx.
+WARNING:Xst:1710 - FF/Latch  <current_line320_0> (without init value) has a constant value of 0 in block <ivga>.
+WARNING:Xst:1710 - FF/Latch  <current_line320_1> (without init value) has a constant value of 0 in block <ivga>.
+WARNING:Xst:1710 - FF/Latch  <current_line320_2> (without init value) has a constant value of 0 in block <ivga>.
+WARNING:Xst:1710 - FF/Latch  <current_line320_3> (without init value) has a constant value of 0 in block <ivga>.
+WARNING:Xst:1710 - FF/Latch  <current_line320_4> (without init value) has a constant value of 0 in block <ivga>.
+WARNING:Xst:1710 - FF/Latch  <current_line320_5> (without init value) has a constant value of 0 in block <ivga>.
+WARNING:Xst:1710 - FF/Latch  <current_line320_6> (without init value) has a constant value of 0 in block <ivga>.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch  <pixel_count_0> (without init value) has a constant value of 0 in block <ivga>.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch  <pixel_count_1> (without init value) has a constant value of 0 in block <ivga>.
+
+Optimizing unit <ivga> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block ivga, actual ratio is 0.
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : ivga.ngr
+Top Level Output File Name         : ivga
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 593
+
+Cell Usage :
+# BELS                             : 204
+#      GND                         : 1
+#      INV                         : 5
+#      LUT1                        : 1
+#      LUT1_L                      : 22
+#      LUT2                        : 14
+#      LUT2_D                      : 1
+#      LUT2_L                      : 31
+#      LUT3                        : 35
+#      LUT3_D                      : 2
+#      LUT3_L                      : 5
+#      LUT4                        : 26
+#      LUT4_D                      : 5
+#      LUT4_L                      : 7
+#      MUXCY                       : 24
+#      VCC                         : 1
+#      XORCY                       : 24
+# FlipFlops/Latches                : 62
+#      FD                          : 4
+#      FDE                         : 25
+#      FDR                         : 13
+#      FDRE                        : 18
+#      FDRS                        : 2
+# Clock Buffers                    : 2
+#      BUFG                        : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 227
+#      IBUF                        : 67
+#      OBUF                        : 160
+# Others                           : 1
+#      pixel_fifo                  : 1
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 2vp30ff896-7 
+
+ Number of Slices:                      85  out of  13696     0%  
+ Number of Slice Flip Flops:            62  out of  27392     0%  
+ Number of 4 input LUTs:               149  out of  27392     0%  
+ Number of bonded IOBs:                228  out of    556    41%  
+ Number of GCLKs:                        2  out of     16    12%  
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+ClkCpt_41                          | BUFG                   | 46    |
+PLB_Clk                            | BUFGP                  | 16    |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -7
+
+   Minimum period: 4.225ns (Maximum Frequency: 236.689MHz)
+   Minimum input arrival time before clock: 2.948ns
+   Maximum output required time after clock: 4.563ns
+   Maximum combinational path delay: 2.107ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'ClkCpt_41'
+  Clock period: 4.225ns (frequency: 236.689MHz)
+  Total number of paths / destination ports: 1839 / 102
+-------------------------------------------------------------------------
+Delay:               4.225ns (Levels of Logic = 4)
+  Source:            cmptHsync320_7 (FF)
+  Destination:       cmptVsync320_0 (FF)
+  Source Clock:      ClkCpt_41 rising
+  Destination Clock: ClkCpt_41 rising
+
+  Data Path: cmptHsync320_7 to cmptVsync320_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q              5   0.370   0.564  cmptHsync320_7 (cmptHsync320_7)
+     LUT3:I0->O            1   0.275   0.467  Ker81 (N8)
+     LUT3_D:I0->LO         1   0.275   0.138  _n0089_SW0 (N241)
+     LUT4:I3->O           12   0.275   0.539  _n0089 (_n0089)
+     LUT4:I2->O           10   0.275   0.511  _n00571 (_n0057)
+     FDRE:R                    0.536          cmptVsync320_0
+    ----------------------------------------
+    Total                      4.225ns (2.006ns logic, 2.219ns route)
+                                       (47.5% logic, 52.5% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'PLB_Clk'
+  Clock period: 2.828ns (frequency: 353.619MHz)
+  Total number of paths / destination ports: 108 / 33
+-------------------------------------------------------------------------
+Delay:               2.828ns (Levels of Logic = 2)
+  Source:            vga_master_state_current_FFd3 (FF)
+  Destination:       vga_master_state_current_FFd3 (FF)
+  Source Clock:      PLB_Clk rising
+  Destination Clock: PLB_Clk rising
+
+  Data Path: vga_master_state_current_FFd3 to vga_master_state_current_FFd3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRS:C->Q            30   0.370   0.804  vga_master_state_current_FFd3 (vga_master_state_current_FFd3)
+     LUT4_L:I0->LO         1   0.275   0.236  vga_master_state_current_FFd3-In34 (vga_master_state_current_FFd3-In_map38)
+     LUT2:I0->O            1   0.275   0.331  vga_master_state_current_FFd3-In37 (vga_master_state_current_FFd3-In_map40)
+     FDRS:S                    0.536          vga_master_state_current_FFd3
+    ----------------------------------------
+    Total                      2.828ns (1.456ns logic, 1.372ns route)
+                                       (51.5% logic, 48.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'PLB_Clk'
+  Total number of paths / destination ports: 14 / 14
+-------------------------------------------------------------------------
+Offset:              2.948ns (Levels of Logic = 3)
+  Source:            PLB_MAddrAck (PAD)
+  Destination:       vga_master_state_current_FFd3 (FF)
+  Destination Clock: PLB_Clk rising
+
+  Data Path: PLB_MAddrAck to vga_master_state_current_FFd3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             2   0.878   0.416  PLB_MAddrAck_IBUF (PLB_MAddrAck_IBUF)
+     LUT4_L:I3->LO         1   0.275   0.236  vga_master_state_current_FFd3-In34 (vga_master_state_current_FFd3-In_map38)
+     LUT2:I0->O            1   0.275   0.331  vga_master_state_current_FFd3-In37 (vga_master_state_current_FFd3-In_map40)
+     FDRS:S                    0.536          vga_master_state_current_FFd3
+    ----------------------------------------
+    Total                      2.948ns (1.964ns logic, 0.984ns route)
+                                       (66.6% logic, 33.4% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'PLB_Clk'
+  Total number of paths / destination ports: 65 / 34
+-------------------------------------------------------------------------
+Offset:              4.563ns (Levels of Logic = 2)
+  Source:            vga_master_state_current_FFd3 (FF)
+  Destination:       M_request (PAD)
+  Source Clock:      PLB_Clk rising
+
+  Data Path: vga_master_state_current_FFd3 to M_request
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRS:C->Q            30   0.370   0.804  vga_master_state_current_FFd3 (vga_master_state_current_FFd3)
+     LUT2:I0->O           13   0.275   0.522  vga_master_state_current_Out11 (M_RNW_OBUF)
+     OBUF:I->O                 2.592          M_request_OBUF (M_request)
+    ----------------------------------------
+    Total                      4.563ns (3.237ns logic, 1.326ns route)
+                                       (70.9% logic, 29.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'ClkCpt_41'
+  Total number of paths / destination ports: 55 / 26
+-------------------------------------------------------------------------
+Offset:              4.063ns (Levels of Logic = 2)
+  Source:            current_line320_7 (FF)
+  Destination:       M_ABus<24> (PAD)
+  Source Clock:      ClkCpt_41 rising
+
+  Data Path: current_line320_7 to M_ABus<24>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              3   0.370   0.495  current_line320_7 (current_line320_7)
+     LUT3:I1->O            1   0.275   0.332  M_ABus<24>1 (M_ABus_24_OBUF)
+     OBUF:I->O                 2.592          M_ABus_24_OBUF (M_ABus<24>)
+    ----------------------------------------
+    Total                      4.063ns (3.237ns logic, 0.826ns route)
+                                       (79.7% logic, 20.3% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 66 / 66
+-------------------------------------------------------------------------
+Delay:               2.107ns (Levels of Logic = 2)
+  Source:            PLB_MRdDAck (PAD)
+  Destination:       the_pixel_fifo:wr_en (PAD)
+
+  Data Path: PLB_MRdDAck to the_pixel_fifo:wr_en
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             2   0.878   0.476  PLB_MRdDAck_IBUF (PLB_MRdDAck_IBUF)
+     LUT2:I1->O            8   0.275   0.478  pixel_fifo_we1 (pixel_fifo_we)
+    pixel_fifo:wr_en           0.000          the_pixel_fifo
+    ----------------------------------------
+    Total                      2.107ns (1.153ns logic, 0.954ns route)
+                                       (54.7% logic, 45.3% route)
+
+=========================================================================
+CPU : 10.58 / 10.86 s | Elapsed : 11.00 / 11.00 s
+ 
+--> 
+
+Total memory usage is 191380 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  158 (   0 filtered)
+Number of infos    :    6 (   0 filtered)
+

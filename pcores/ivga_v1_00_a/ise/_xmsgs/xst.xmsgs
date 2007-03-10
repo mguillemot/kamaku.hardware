@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="warning" file="Xst" num="753" delta="unknown" >&quot;<arg fmt="%s" index="1">C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/ivga.vhd</arg>&quot; line <arg fmt="%d" index="2">363</arg>: Unconnected output port &apos;<arg fmt="%s" index="3">empty</arg>&apos; of component &apos;<arg fmt="%s" index="4">pixel_fifo</arg>&apos;.
+</msg>
+
+<msg type="warning" file="Xst" num="753" delta="unknown" >&quot;<arg fmt="%s" index="1">C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/ivga.vhd</arg>&quot; line <arg fmt="%d" index="2">363</arg>: Unconnected output port &apos;<arg fmt="%s" index="3">full</arg>&apos; of component &apos;<arg fmt="%s" index="4">pixel_fifo</arg>&apos;.
+</msg>
+
+<msg type="warning" file="Xst" num="766" delta="unknown" >&quot;<arg fmt="%s" index="1">C:/IGAM/testing_system_vga/pcores/ivga_v1_00_a/hdl/vhdl/ivga.vhd</arg>&quot; line <arg fmt="%d" index="2">363</arg>: Generating a Black Box for component &lt;<arg fmt="%s" index="3">pixel_fifo</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="1304" delta="unknown" >Contents of register &lt;<arg fmt="%s" index="1">slave_slice</arg>&gt; in unit &lt;<arg fmt="%s" index="2">ivga</arg>&gt; never changes during circuit operation. The register is replaced by logic.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_pendPri</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="1306" delta="unknown" >Output &lt;<arg fmt="%s" index="1">Sl_rearbitrate</arg>&gt; is never assigned.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_wrPrim</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_MSize</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="1306" delta="unknown" >Output &lt;<arg fmt="%s" index="1">Sl_MErr</arg>&gt; is never assigned.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_MWrBTerm</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_MWrDAck</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="1306" delta="unknown" >Output &lt;<arg fmt="%s" index="1">Sl_wrBTerm</arg>&gt; is never assigned.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_rdBurst</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_masterID</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_SAValid</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_PAValid</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_size</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_MRdWdAddr</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_guarded</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_busLock</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_MBusy</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="1306" delta="unknown" >Output &lt;<arg fmt="%s" index="1">Sl_SSize</arg>&gt; is never assigned.
+</msg>
+
+<msg type="warning" file="Xst" num="1306" delta="unknown" >Output &lt;<arg fmt="%s" index="1">M_wrDBus</arg>&gt; is never assigned.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_MSSize</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_wrDBus&lt;0:31&gt;</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_BE</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="1306" delta="unknown" >Output &lt;<arg fmt="%s" index="1">Sl_MBusy</arg>&gt; is never assigned.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_reqPri</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_lockErr</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">VGA_PixelClock_Borne</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="1306" delta="unknown" >Output &lt;<arg fmt="%s" index="1">Sl_rdWdAddr</arg>&gt; is never assigned.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_MRdBTerm</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_wrBurst</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_ordered</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="1306" delta="unknown" >Output &lt;<arg fmt="%s" index="1">VGA_DEBUG</arg>&gt; is never assigned.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_compress</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="1306" delta="unknown" >Output &lt;<arg fmt="%s" index="1">Sl_rdBTerm</arg>&gt; is never assigned.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_rdPrim</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_MRearbitrate</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_ABus</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_abort</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">VGA_PixelClock_VGA</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_MErr</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_type</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="unknown" >Input &lt;<arg fmt="%s" index="1">PLB_pendReq</arg>&gt; is never used.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">x320</arg>&gt; is assigned but never used.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">y640</arg>&gt; is assigned but never used.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">x640</arg>&gt; is assigned but never used.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">slave_slice&lt;0:27&gt;</arg>&gt; is assigned but never used.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">slave_slice&lt;29:31&gt;</arg>&gt; is assigned but never used.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="unknown" >Signal &lt;<arg fmt="%s" index="1">y320</arg>&gt; is assigned but never used.
+</msg>
+
+<msg type="info" file="Xst" num="1799" delta="unknown" >State <arg fmt="%s" index="1">slave_read</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">vga_slave_state_current</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="1799" delta="unknown" >State <arg fmt="%s" index="1">slave_write</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">vga_slave_state_current</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="1799" delta="unknown" >State <arg fmt="%s" index="1">slave_addack</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">vga_slave_state_current</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="1799" delta="unknown" >State <arg fmt="%s" index="1">slave_read2</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">vga_slave_state_current</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="1799" delta="unknown" >State <arg fmt="%s" index="1">slave_write2</arg> is never reached in FSM &lt;<arg fmt="%s" index="2">vga_slave_state_current</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1293" delta="unknown" >FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_18</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_19</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_20</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_21</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_22</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_23</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_24</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_25</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_26</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_27</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_28</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_29</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_30</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_31</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_control_reg_0</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_control_reg_1</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_control_reg_2</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_0</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_1</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_2</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_3</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_4</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_5</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_6</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_7</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_8</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_9</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_10</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_11</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_12</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_13</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_14</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_15</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_16</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1896" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">vga_base_address_17</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">VGA_INTERRUPT</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_3</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_4</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_5</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_6</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_7</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_8</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_9</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_10</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_11</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_12</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_13</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_14</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_15</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_16</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_17</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_18</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_19</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_20</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_21</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_22</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_23</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_24</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_25</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_26</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_27</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_28</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_29</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_30</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">vga_control_reg_31</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_0</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_1</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_2</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_3</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_4</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_5</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_6</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_7</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_8</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_9</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_10</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_11</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_12</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_13</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_14</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_15</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_16</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_17</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_18</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_19</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_20</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_21</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_22</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_23</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_24</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_25</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_26</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_27</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_28</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_29</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_30</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">current_line640_31</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1291" delta="unknown" >FF/Latch &lt;<arg fmt="%s" index="1">start_read_line640</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1988" delta="unknown" >Unit &lt;<arg fmt="%s" index="1">ivga</arg>&gt;: instances &lt;<arg fmt="%s" index="2">Mcompar__n0081</arg>&gt;, &lt;<arg fmt="%s" index="3">Mcompar__n0090</arg>&gt; of unit &lt;<arg fmt="%s" index="4">LPM_COMPARE_10</arg>&gt; and unit &lt;<arg fmt="%s" index="5">LPM_COMPARE_14</arg>&gt; are dual, second instance is removed
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch  &lt;<arg fmt="%s" index="1">current_line320_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch  &lt;<arg fmt="%s" index="1">current_line320_1</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch  &lt;<arg fmt="%s" index="1">current_line320_2</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch  &lt;<arg fmt="%s" index="1">current_line320_3</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch  &lt;<arg fmt="%s" index="1">current_line320_4</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch  &lt;<arg fmt="%s" index="1">current_line320_5</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="unknown" >FF/Latch  &lt;<arg fmt="%s" index="1">current_line320_6</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">pixel_count_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="1895" delta="unknown" >Due to other FF/Latch trimming, FF/Latch  &lt;<arg fmt="%s" index="1">pixel_count_1</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">ivga</arg>&gt;.
+</msg>
+
+</messages>

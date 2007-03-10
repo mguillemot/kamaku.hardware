@@ -1,0 +1,6 @@
+# Output products list for <pixel_fifo>
+pixel_fifo.ngc
+pixel_fifo.vhd
+pixel_fifo.vho
+pixel_fifo.xco
+pixel_fifo_flist.txt

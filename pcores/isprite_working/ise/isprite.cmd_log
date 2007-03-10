@@ -1,0 +1,51 @@
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+ngdbuild -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -dd _ngo -nt timestamp -i -p xc2vp30-ff896-7 isprite.ngc isprite.ngd
+ngdbuild -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -dd _ngo -nt timestamp -i -p xc2vp30-ff896-7 isprite.ngc isprite.ngd
+map -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -p xc2vp30-ff896-7 -cm area -pr b -k 4 -c 100 -tx off -o isprite_map.ncd isprite.ngd isprite.pcf
+par -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -w -intstyle ise -ol std -t 1 isprite_map.ncd isprite.ncd isprite.pcf
+trce -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -e 3 -l 3 -s 7 -xml isprite isprite.ncd -o isprite.twr isprite.pcf
+timingan -intstyle ise isprite.ncd isprite
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+ngdbuild -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -dd _ngo -nt timestamp -i -p xc2vp30-ff896-7 isprite.ngc isprite.ngd
+map -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -p xc2vp30-ff896-7 -cm area -pr b -k 4 -c 100 -tx off -o isprite_map.ncd isprite.ngd isprite.pcf
+par -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -w -intstyle ise -ol std -t 1 isprite_map.ncd isprite.ncd isprite.pcf
+trce -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -e 3 -l 3 -s 7 -xml isprite isprite.ncd -o isprite.twr isprite.pcf
+timingan -intstyle ise isprite.ncd isprite
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+ngdbuild -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -dd _ngo -nt timestamp -i -p xc2vp30-ff896-7 isprite.ngc isprite.ngd
+map -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -p xc2vp30-ff896-7 -cm area -pr b -k 4 -c 100 -tx off -o isprite_map.ncd isprite.ngd isprite.pcf
+par -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -w -intstyle ise -ol std -t 1 isprite_map.ncd isprite.ncd isprite.pcf
+trce -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -e 3 -l 3 -s 7 -xml isprite isprite.ncd -o isprite.twr isprite.pcf
+trce -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -e 3 -l 3 -s 7 -xml isprite isprite.ncd -o isprite.twr isprite.pcf
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr
+ngdbuild -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -dd _ngo -nt timestamp -uc isprite.ucf -p xc2vp30-ff896-7 isprite.ngc isprite.ngd
+map -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -p xc2vp30-ff896-7 -cm area -pr b -k 4 -c 100 -tx off -o isprite_map.ncd isprite.ngd isprite.pcf
+par -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -w -intstyle ise -ol std -t 1 isprite_map.ncd isprite.ncd isprite.pcf
+trce -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -e 3 -l 3 -s 7 -xml isprite isprite.ncd -o isprite.twr isprite.pcf
+xst -ise "C:/IGAM/testing_system_vga/pcores/isprite_working/ise/ise" -intstyle ise -ifn isprite.xst -ofn isprite.syr

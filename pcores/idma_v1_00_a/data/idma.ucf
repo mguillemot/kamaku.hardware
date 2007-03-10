@@ -1,0 +1,2 @@
+NET "PLB_Clk" TNM_NET = "PLB_Clk";
+TIMESPEC "TS_PLB_Clk" = PERIOD "PLB_Clk" 9.75 ns HIGH 50 %;

@@ -1,0 +1,24 @@
+Release 8.1.03i reportgen I.27
+Copyright (c) 1995-2005 Xilinx, Inc.  All rights reserved.
+
+Kumi::  Mon Sep 25 15:53:37 2006
+
+reportgen -intstyle ise -clock_regions -o idma idma.ncd 
+
+Loading device for application Rf_Device from file '2vp30.nph' in environment
+/opt/Xilinx/ISE.
+   "idma" is an NCD, version 3.1, device xc2vp30, package ff896, speed -7
+ReportGen:LoadDesign: 'idma.ncd'
+Initializing temperature to 85.000 Celsius. (default - Range: -40.000 to 100.000
+Celsius)
+Initializing voltage to 1.400 Volts. (default - Range: 1.400 to 1.600 Volts)
+Device speed data version:  "PRODUCTION 1.92 2005-11-04".
+
+Generating Clock Region Report: idma.clk_rgn
+
+
+Number of error messages: 0
+Number of warning messages: 0
+Number of info messages: 0
+
+reportgen done!

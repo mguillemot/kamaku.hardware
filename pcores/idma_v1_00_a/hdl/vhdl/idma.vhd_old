@@ -1,0 +1,1472 @@
+------------------------------------------------------------------------------
+-- Filename:          idma.vhd
+-- Version:           1.00.a
+-- Description:       Top level design, instantiates IPIF and user logic.
+-- Date:              Mon May 29 16:11:16 2006 (by Create and Import Peripheral Wizard)
+-- VHDL Standard:     VHDL'93
+------------------------------------------------------------------------------
+-- Naming Conventions:
+--   active low signals:                    "*_n"
+--   clock signals:                         "clk", "clk_div#", "clk_#x"
+--   reset signals:                         "rst", "rst_n"
+--   generics:                              "C_*"
+--   user defined types:                    "*_TYPE"
+--   state machine next state:              "*_ns"
+--   state machine current state:           "*_cs"
+--   combinatorial signals:                 "*_com"
+--   pipelined or register delay signals:   "*_d#"
+--   counter signals:                       "*cnt*"
+--   clock enable signals:                  "*_ce"
+--   internal version of output port:       "*_i"
+--   device pins:                           "*_pin"
+--   ports:                                 "- Names begin with Uppercase"
+--   processes:                             "*_PROCESS"
+--   component instantiations:              "<ENTITY_>I_<#|FUNC>"
+------------------------------------------------------------------------------
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
+
+-- library Proc_Common_v1_00_b;
+-- use Proc_Common_v1_00_b.pselect;
+
+-- library idma_v1_00_a;
+-- use idma_v1_00_a.all;
+
+------------------------------------------------------------------------------
+-- Entity section
+------------------------------------------------------------------------------
+-- Definition of Generics:
+--   C_BASEADDR                   -- User logic base address
+--   C_HIGHADDR                   -- User logic high address
+--   C_PLB_AWIDTH                 -- PLB address bus width
+--   C_PLB_DWIDTH                 -- PLB address data width
+--   C_PLB_NUM_MASTERS            -- Number of PLB masters
+--   C_PLB_MID_WIDTH              -- log2(C_PLB_NUM_MASTERS)
+--   C_USER_ID_CODE               -- User ID to place in MIR/Reset register
+--   C_FAMILY                     -- Target FPGA architecture
+--
+-- Definition of Ports:
+--   PLB_Clk                      -- PLB Clock
+--   PLB_Rst                      -- PLB Reset
+--   Sl_addrAck                   -- Slave address acknowledge
+--   Sl_MBusy                     -- Slave busy indicator
+--   Sl_MErr                      -- Slave error indicator
+--   Sl_rdBTerm                   -- Slave terminate read burst transfer
+--   Sl_rdComp                    -- Slave read transfer complete indicator
+--   Sl_rdDAck                    -- Slave read data acknowledge
+--   Sl_rdDBus                    -- Slave read data bus
+--   Sl_rdWdAddr                  -- Slave read word address
+--   Sl_rearbitrate               -- Slave re-arbitrate bus indicator
+--   Sl_SSize                     -- Slave data bus size
+--   Sl_wait                      -- Slave wait indicator
+--   Sl_wrBTerm                   -- Slave terminate write burst transfer
+--   Sl_wrComp                    -- Slave write transfer complete indicator
+--   Sl_wrDAck                    -- Slave write data acknowledge
+--   PLB_abort                    -- PLB abort request indicator
+--   PLB_ABus                     -- PLB address bus
+--   PLB_BE                       -- PLB byte enables
+--   PLB_busLock                  -- PLB bus lock
+--   PLB_compress                 -- PLB compressed data transfer indicator
+--   PLB_guarded                  -- PLB guarded transfer indicator
+--   PLB_lockErr                  -- PLB lock error indicator
+--   PLB_masterID                 -- PLB current master identifier
+--   PLB_MSize                    -- PLB master data bus size
+--   PLB_ordered                  -- PLB synchronize transfer indicator
+--   PLB_PAValid                  -- PLB primary address valid indicator
+--   PLB_pendPri                  -- PLB pending request priority
+--   PLB_pendReq                  -- PLB pending bus request indicator
+--   PLB_rdBurst                  -- PLB burst read transfer indicator
+--   PLB_rdPrim                   -- PLB secondary to primary read request indicator
+--   PLB_reqPri                   -- PLB current request priority
+--   PLB_RNW                      -- PLB read/not write
+--   PLB_SAValid                  -- PLB secondary address valid indicator
+--   PLB_size                     -- PLB transfer size
+--   PLB_type                     -- PLB transfer type
+--   PLB_wrBurst                  -- PLB burst write transfer indicator
+--   PLB_wrDBus                   -- PLB write data bus
+--   PLB_wrPrim                   -- PLB secondary to primary write request indicator
+--   M_abort                      -- Master abort bus request indicator
+--   M_ABus                       -- Master address bus
+--   M_BE                         -- Master byte enables
+--   M_busLock                    -- Master buslock
+--   M_compress                   -- Master compressed data transfer indicator
+--   M_guarded                    -- Master guarded transfer indicator
+--   M_lockErr                    -- Master lock error indicator
+--   M_MSize                      -- Master data bus size
+--   M_ordered                    -- Master synchronize transfer indicator
+--   M_priority                   -- Master request priority
+--   M_rdBurst                    -- Master burst read transfer indicator
+--   M_request                    -- Master request
+--   M_RNW                        -- Master read/nor write
+--   M_size                       -- Master transfer size
+--   M_type                       -- Master transfer type
+--   M_wrBurst                    -- Master burst write transfer indicator
+--   M_wrDBus                     -- Master write data bus
+--   PLB_MBusy                    -- PLB master slave busy indicator
+--   PLB_MErr                     -- PLB master slave error indicator
+--   PLB_MWrBTerm                 -- PLB master terminate write burst indicator
+--   PLB_MWrDAck                  -- PLB master write data acknowledge
+--   PLB_MAddrAck                 -- PLB master address acknowledge
+--   PLB_MRdBTerm                 -- PLB master terminate read burst indicator
+--   PLB_MRdDAck                  -- PLB master read data acknowledge
+--   PLB_MRdDBus                  -- PLB master read data bus
+--   PLB_MRdWdAddr                -- PLB master read word address
+--   PLB_MRearbitrate             -- PLB master bus re-arbitrate indicator
+--   PLB_MSSize                   -- PLB slave data bus size
+------------------------------------------------------------------------------
+
+entity idma is
+  generic
+    (
+      -- ADD USER GENERICS BELOW THIS LINE ---------------
+      --USER generics added here
+      -- ADD USER GENERICS ABOVE THIS LINE ---------------
+
+      -- DO NOT EDIT BELOW THIS LINE ---------------------
+      -- Bus protocol parameters, do not add to or delete
+      C_BASEADDR                     : std_logic_vector     := X"20000000";
+      C_HIGHADDR                     : std_logic_vector     := X"2001FFFF";
+      C_PLB_AWIDTH                   : integer              := 32;
+      C_PLB_DWIDTH                   : integer              := 64;
+      C_PLB_NUM_MASTERS              : integer              := 8;
+      C_PLB_MID_WIDTH                : integer              := 3;
+      C_USER_ID_CODE                 : integer              := 3;
+      C_FAMILY                       : string               := "virtex2p"
+      -- DO NOT EDIT ABOVE THIS LINE ---------------------
+      );
+  port
+    (
+      -- ADD USER PORTS BELOW THIS LINE ------------------
+      --USER ports added here
+      -- ADD USER PORTS ABOVE THIS LINE ------------------
+
+      -- DO NOT EDIT BELOW THIS LINE ---------------------
+      -- Bus protocol ports, do not add to or delete
+      PLB_Clk                        : in  std_logic;
+      PLB_Rst                        : in  std_logic;
+
+      -- PLB signals (Slave Side)
+      Sl_addrAck                     : out std_logic;
+      Sl_MBusy                       : out std_logic_vector(0 to C_PLB_NUM_MASTERS-1);
+      Sl_MErr                        : out std_logic_vector(0 to C_PLB_NUM_MASTERS-1);
+      Sl_rdBTerm                     : out std_logic;
+      Sl_rdComp                      : out std_logic;
+      Sl_rdDAck                      : out std_logic;
+      Sl_rdDBus                      : out std_logic_vector(0 to C_PLB_DWIDTH-1);
+      Sl_rdWdAddr                    : out std_logic_vector(0 to 3);
+      Sl_rearbitrate                 : out std_logic;
+      Sl_SSize                       : out std_logic_vector(0 to 1);
+      Sl_wait                        : out std_logic;
+      Sl_wrBTerm                     : out std_logic;
+      Sl_wrComp                      : out std_logic;
+      Sl_wrDAck                      : out std_logic;
+
+
+      
+      PLB_abort                      : in  std_logic;
+      PLB_ABus                       : in  std_logic_vector(0 to C_PLB_AWIDTH-1);
+      PLB_BE                         : in  std_logic_vector(0 to C_PLB_DWIDTH/8-1);
+      PLB_busLock                    : in  std_logic;
+      PLB_compress                   : in  std_logic;
+      PLB_guarded                    : in  std_logic;
+      PLB_lockErr                    : in  std_logic;
+      PLB_masterID                   : in  std_logic_vector(0 to C_PLB_MID_WIDTH-1);
+      PLB_MSize                      : in  std_logic_vector(0 to 1);
+      PLB_ordered                    : in  std_logic;
+      PLB_PAValid                    : in  std_logic;
+      PLB_pendPri                    : in  std_logic_vector(0 to 1);
+      PLB_pendReq                    : in  std_logic;
+      PLB_rdBurst                    : in  std_logic;
+      PLB_rdPrim                     : in  std_logic;
+      PLB_reqPri                     : in  std_logic_vector(0 to 1);
+      PLB_RNW                        : in  std_logic;
+      PLB_SAValid                    : in  std_logic;
+      PLB_size                       : in  std_logic_vector(0 to 3);
+      PLB_type                       : in  std_logic_vector(0 to 2);
+      PLB_wrBurst                    : in  std_logic;
+      PLB_wrDBus                     : in  std_logic_vector(0 to C_PLB_DWIDTH-1);
+      PLB_wrPrim                     : in  std_logic;
+
+
+      -- PLB signals (Master Side)
+      M_abort                        : out std_logic;
+      M_ABus                         : out std_logic_vector(0 to C_PLB_AWIDTH-1);
+      M_BE                           : out std_logic_vector(0 to C_PLB_DWIDTH/8-1);
+      M_busLock                      : out std_logic;
+      M_compress                     : out std_logic;
+      M_guarded                      : out std_logic;
+      M_lockErr                      : out std_logic;
+      M_MSize                        : out std_logic_vector(0 to 1);
+      M_ordered                      : out std_logic;
+      M_priority                     : out std_logic_vector(0 to 1);
+      M_rdBurst                      : out std_logic;
+      M_request                      : out std_logic;
+      M_RNW                          : out std_logic;
+      M_size                         : out std_logic_vector(0 to 3);
+      M_type                         : out std_logic_vector(0 to 2);
+      M_wrBurst                      : out std_logic;
+      M_wrDBus                       : out std_logic_vector(0 to C_PLB_DWIDTH-1);
+      PLB_MBusy                      : in  std_logic;
+      PLB_MErr                       : in  std_logic;
+      PLB_MWrBTerm                   : in  std_logic;
+      PLB_MWrDAck                    : in  std_logic;
+      PLB_MAddrAck                   : in  std_logic;
+      PLB_MRdBTerm                   : in  std_logic;
+      PLB_MRdDAck                    : in  std_logic;
+      PLB_MRdDBus                    : in  std_logic_vector(0 to (C_PLB_DWIDTH-1));
+      PLB_MRdWdAddr                  : in  std_logic_vector(0 to 3);
+      PLB_MRearbitrate               : in  std_logic;
+      PLB_MSSize                     : in  std_logic_vector(0 to 1);
+      -- DO NOT EDIT ABOVE THIS LINE ---------------------
+
+
+      -- DMA Signals
+      DMA_Interrupt                  : out std_logic
+
+      );
+
+  attribute SIGIS : string;
+  attribute SIGIS of PLB_Clk       : signal is "Clk";
+  attribute SIGIS of PLB_Rst       : signal is "Rst";
+
+end entity idma;
+
+------------------------------------------------------------------------------
+-- Architecture section
+------------------------------------------------------------------------------
+
+architecture IMP of idma is
+
+  
+  type burst_reg_type is
+    array (natural range 0 to 31) of std_logic_vector(0 to 63);
+
+  
+
+-- Registers
+
+  signal dma_control_reg : std_logic_vector(0 to 31);
+  signal dma_control_reg_we  : std_logic;
+  signal dma_control_reg_rst : std_logic;
+  signal sa_reg : std_logic_vector(0 to 31);
+  signal sa_reg_we : std_logic;
+  signal sa_reg_inc : std_logic;
+  signal da_reg_inc : std_logic;
+  signal da_reg : std_logic_vector(0 to 31);
+  signal da_reg_we : std_logic;
+  signal length_reg : std_logic_vector(0 to 31);
+  signal length_reg_we : std_logic;
+  signal length_reg_dec : std_logic;
+
+
+  signal burst_cpt : std_logic_vector(0 to 7);
+  signal burst_cpt_rst : std_logic;
+  signal burst_cpt_inc : std_logic;
+  
+    
+  signal burst_reg : burst_reg_type;
+  signal burst_reg_we : std_logic_vector(0 to 31);
+  
+  signal slave_slice : std_logic_vector(0 to 31);
+  signal slave_slice_we : std_logic;
+
+  
+  type DMA_Slave_State_Machine is (Slave_Idle,
+                                   Slave_AddAck,
+                                   Slave_Read,
+                                   Slave_Read2,
+                                   Slave_Write,
+                                   Slave_Write2);
+  
+  type DMA_Master_State_Machine is (Master_Idle,
+                                    Master_RAdd,
+                                    Master_Read1,
+                                    Master_Read2,
+                                    Master_Read3,
+                                    Master_WAdd,
+                                    Master_Write1,
+                                    Master_Write2,
+                                    Master_Wait,
+                                    Master_Wait2,
+                                    Master_WaitBis,
+                                    Master_WaitAck);
+
+  
+  signal dma_slave_state_current : DMA_Slave_State_Machine := Slave_Idle;
+  signal dma_slave_state_next : DMA_Slave_State_Machine := Slave_Idle;
+  signal dma_master_state_current : DMA_Master_State_Machine := Master_Idle;
+  signal dma_master_state_next : DMA_Master_State_Machine := Master_Idle;
+
+begin
+
+
+  -----------------------------------------------------------------------------
+  -- 
+  -----------------------------------------------------------------------------
+
+  
+  
+--   DMA_CLK_PROC: process(PLB_Clk) is
+--   begin
+--     if PLB_Rst = '1' then
+--       dma_control_reg <= (others => '0');
+--       sa_reg <= (others => '0');
+--       da_reg <= (others => '0');
+--       length_reg <= (others => '0');
+--     else
+--       if PLB_Clk'event and PLB_Clk = '1' then
+--         dma_state_current <= dma_state_next;
+--       end if;
+--     end if;
+--   end process DMA_CLK_PROC;
+
+
+  -----------------------------------------------------------------------------
+  -- DMA_CHANGE_STATE : change to the next state of the slave and master
+  -- fsm (finit state machine)
+  -----------------------------------------------------------------------------
+
+  DMA_CHANGE_STATE: process(PLB_Clk,PLB_Rst) is
+  begin
+    if PLB_Clk'Event and PLB_Clk = '1' then
+      if PLB_Rst = '1'  then
+        dma_slave_state_current <= Slave_Idle;
+        dma_master_state_current <= Master_Idle;
+      else
+        dma_slave_state_current <= dma_slave_state_next;
+        dma_master_state_current <= dma_master_state_next;    
+      end if;
+    end if;
+  end process DMA_CHANGE_STATE;
+
+
+
+  -----------------------------------------------------------------------------
+  -- REG_WRITE : write data into registers
+  -----------------------------------------------------------------------------
+  REG_WRITE: process(PLB_Clk,dma_control_reg_we,dma_control_reg_rst, sa_reg_we, da_reg_we , length_reg_we ,slave_slice_we,
+                    length_reg_dec,sa_reg_inc,da_reg_inc, burst_reg_we) is
+  begin
+    if PLB_Rst = '1'  then
+      dma_control_reg <= X"ABCDEF00";
+      sa_reg <= X"00000002";
+      da_reg <= X"00000003";
+      length_reg <= X"00000004";
+    elsif PLB_Clk'Event and PLB_Clk = '1' then
+
+      -- Slave registers, receive data from PLB.
+      if dma_control_reg_rst = '1'  then
+        dma_control_reg <= X"ABCDEF00";
+      elsif dma_control_reg_we = '1' then
+        dma_control_reg <=  PLB_wrDBus(32 to 63); 
+      end if;
+      if sa_reg_we = '1' then
+        sa_reg(0 to 29) <=  PLB_wrDBus(32 to 61);
+        sa_reg(30 to 31) <= "00";
+      end if;
+      if sa_reg_inc = '1' then 
+        sa_reg <= sa_reg + 128;
+      end if;
+      if da_reg_we = '1' then
+        da_reg(0 to 29) <=  PLB_wrDBus(32 to 61);
+        da_reg(30 to 31) <= "00";
+      end if;
+      if da_reg_inc = '1' then
+        da_reg <= da_reg + 128;
+      end if;
+      if length_reg_we = '1' then
+        length_reg <=  PLB_wrDBus(32 to 63); 
+      end if;
+      if length_reg_dec = '1' then 
+        length_reg <= length_reg - 8;
+      end if;
+      if slave_slice_we = '1' then
+        slave_slice <=  PLB_ABus - C_BASEADDR;
+      end if;
+
+      if burst_cpt_rst = '1' then
+        burst_cpt <= X"00";
+      end if;
+      if burst_cpt_inc = '1' then
+        burst_cpt <= burst_cpt + 1;
+      end if;
+      
+      -- Master registers, reveive data from PLB.
+
+      for we in 0 to 31 loop
+        if burst_reg_we(we) = '1' then
+          burst_reg(we) <= PLB_MRdDBus;
+        end if;
+      end loop;  -- we
+     
+
+      
+
+     
+    end if;
+  end process REG_WRITE;
+
+
+
+  -----------------------------------------------------------------------------
+  -- DMA_SLAVE_STATE : implement the slave fsm.
+  -----------------------------------------------------------------------------
+  DMA_SLAVE_STATE: process(PLB_Clk,dma_slave_state_current,PLB_PAValid, PLB_ABus,
+                           PLB_RNW, slave_slice, dma_control_reg,
+                           sa_reg, length_reg, da_reg ) is
+  begin
+    Sl_addrAck <= '0';
+    Sl_rdComp <= '0';
+    Sl_rdDAck <= '0';
+    Sl_wrDAck <= '0';
+    Sl_wrComp <= '0';
+    dma_control_reg_we <= '0';
+    sa_reg_we <= '0';
+    da_reg_we <= '0';
+    length_reg_we <= '0';
+    Sl_wait <= '0';
+    slave_slice_we <= '0';
+    Sl_rdDBus <= (others => '0');
+
+    
+    case dma_slave_state_current is
+      -- Idle, waiting for address in the dma range.
+      when Slave_Idle =>
+        if PLB_PAValid = '1'            -- there is a request
+          and PLB_ABus >= C_BASEADDR    -- In our range
+          and PLB_ABus <= C_HIGHADDR
+          then  -- and the master
+                                                           -- mode is idle.
+          dma_slave_state_next <= Slave_AddAck;
+          Sl_wait <= '1';
+          slave_slice_we <= '1';
+        else
+          Sl_wait <= '0';
+          slave_slice_we <= '0';
+          dma_slave_state_next <= Slave_Idle;
+        end if;
+
+      -- Read Address and record it into slave_slice.
+      when Slave_AddAck =>   
+        Sl_wait <= '1';
+        Sl_addrAck <= '1';
+        if PLB_RNW = '1' then
+          dma_slave_state_next <= Slave_Read;
+        else
+          dma_slave_state_next <= Slave_Write;
+        end if; 
+
+      -- Read data from plb
+      when Slave_Read =>
+        Sl_rdComp <= '1';
+        case slave_slice(27 to 28) is
+          when "00" =>
+            Sl_rdDBus(32 to 63) <= dma_control_reg;
+          when "01" =>
+            Sl_rdDBus(32 to 63) <= sa_reg;
+          when "10" =>
+            Sl_rdDBus(32 to 63) <= length_reg;
+          when "11" =>
+            Sl_rdDBus(32 to 63) <= da_reg;
+          when others =>
+            Sl_rdDBus(32 to 63) <= X"00010100";
+        end case;
+        dma_slave_state_next <= Slave_Read2;
+
+        
+      when Slave_Read2 =>
+        Sl_rdDAck <= '1';
+        case slave_slice(27 to 28) is
+          when "00" =>
+            Sl_rdDBus(32 to 63) <= dma_control_reg;
+          when "01" =>
+            Sl_rdDBus(32 to 63) <= sa_reg;
+          when "10" =>
+            Sl_rdDBus(32 to 63) <= length_reg;
+          when "11" =>
+            Sl_rdDBus(32 to 63) <= da_reg;
+          when others =>
+            Sl_rdDBus(32 to 63) <= X"00010100";
+        end case;
+        dma_slave_state_next <= Slave_Idle;
+        
+        
+      when Slave_Write =>
+        Sl_wrComp <= '1';
+        case slave_slice(27 to 28) is
+          when "00" =>
+            dma_control_reg_we <= '1'; 
+          when "01" =>
+            sa_reg_we <= '1';
+          when "10" =>
+            length_reg_we <= '1'; 
+          when "11" =>
+            da_reg_we <= '1';   
+          when others =>
+            null;
+        end case;
+        dma_slave_state_next <= Slave_Write2;
+
+
+      when Slave_Write2 =>
+        Sl_wrDAck <= '1';
+        case slave_slice(27 to 28) is
+          when "00" =>
+            dma_control_reg_we <= '1'; 
+          when "01" =>
+            sa_reg_we <= '1';
+          when "10" =>
+            length_reg_we <= '1'; 
+          when "11" =>
+            da_reg_we <= '1';   
+          when others =>
+            null;
+        end case;
+        dma_slave_state_next <= Slave_Idle;
+        
+    end case;
+  end process DMA_SLAVE_STATE;
+
+
+  
+
+
+  Sl_rdBTerm <= '0';
+  Sl_rearbitrate <= '0';
+  Sl_wrBTerm <= '0';
+
+
+  DMA_MASTER_STATE : process(PLB_Clk,dma_master_state_current,
+                             PLB_MAddrAck,PLB_MWrDAck,PLB_MRdDAck,
+                             dma_control_reg,sa_reg,da_reg,burst_reg,length_reg,
+                             burst_cpt,dma_master_state_current
+                            ) is
+   variable interupt : integer := 0;
+  begin
+    M_request <= '0';
+    M_priority <= "00";
+    M_busLock <= '0';
+    M_RNW <= '0';
+    M_BE <= "00000000";
+    M_size <= "0000";
+    M_type <= "000";
+    M_abort <= '0';
+    M_ABus <= X"00000000";
+    M_compress    <= '0';  
+    M_guarded     <= '0';
+    M_lockErr     <= '0';
+    M_MSize       <= (others => '0');
+    M_ordered     <= '0';
+    M_rdBurst     <= '0';
+    M_wrBurst     <= '0';
+    M_wrDBus      <= (others => '0');
+    dma_control_reg_rst <= '0';
+    length_reg_dec <= '0';
+    da_reg_inc <= '0';
+    sa_reg_inc <= '0';
+
+    burst_cpt_rst <= '0';
+    burst_cpt_inc <= '0';
+
+    DMA_Interrupt <= '0';
+    
+   for k  in 0 to 31 loop
+      burst_reg_we(k) <= '0';
+    end loop;  -- k
+    
+    case dma_master_state_current is
+      when Master_Idle =>
+        burst_cpt_rst <= '1';
+        if dma_control_reg(31) = '1' then
+          M_ABus <= sa_reg;
+          M_request <= '0';
+          dma_master_state_next <= Master_RAdd;
+          if dma_control_reg(30) = '1' then 
+            interupt := 1;
+          else
+            interupt := 0;
+          end if;
+        else
+          M_request <= '0';
+          dma_master_state_next <= Master_Idle;
+        end if;
+
+      when Master_RAdd =>   
+        M_priority <= "00";
+        M_RNW <= '1';    
+        M_size <= "1011";
+        M_ABus <= sa_reg;
+        M_request <= '1';
+        burst_cpt_rst <= '1';
+        for j  in 0 to 31 loop
+          if conv_integer(burst_cpt) = j then
+            burst_reg_we(j) <= '1';
+          else
+            burst_reg_we(j) <= '0';
+          end if;
+        end loop;  -- j 
+        if PLB_MAddrAck = '1' then
+          M_rdBurst <= '1';
+          dma_master_state_next <= Master_Read1;
+        else
+          M_rdBurst <= '0';
+          dma_master_state_next <= Master_RAdd;
+        end if;
+
+      when Master_Read1 =>
+        M_ABus <= sa_reg;
+        M_RNW <= '1';
+        M_request <= '0';
+        M_size <= "1011";
+        M_rdBurst <= '1';
+        for j  in 0 to 31 loop
+          if conv_integer(burst_cpt) = j then
+            burst_reg_we(j) <= '1';
+          else
+            burst_reg_we(j) <= '0';
+          end if;
+        end loop;  -- j 
+        if PLB_MRdDAck = '1' then
+          burst_cpt_inc <= '1';
+          dma_master_state_next <= Master_Read2;
+        else
+          burst_cpt_inc <= '0';
+          dma_master_state_next <= Master_Read1;
+        end if;
+
+      when Master_Read2 =>
+        M_ABus <= sa_reg;
+        M_size <= "1011";
+        burst_cpt_inc <= '1';
+        for j  in 0 to 31 loop
+          if conv_integer(burst_cpt) = j then
+            burst_reg_we(j) <= '1';
+          else
+            burst_reg_we(j) <= '0';
+          end if;
+        end loop;  -- j 
+        if burst_cpt >= X"0E" then
+          M_rdBurst <= '0';
+          dma_master_state_next <= Master_Read3;
+        else
+           M_rdBurst <= '1';
+          dma_master_state_next <= Master_Read2;
+        end if;
+
+      When Master_Read3 =>
+        M_rdBurst <= '0';
+        M_ABus <= sa_reg;
+        dma_master_state_next <= Master_Wait;
+        M_request <= '0';
+        burst_cpt_rst <= '1';
+        for j  in 0 to 31 loop
+          if conv_integer(burst_cpt) = j then
+            burst_reg_we(j) <= '1';
+          else
+            burst_reg_we(j) <= '0';
+          end if;
+        end loop;  -- j 
+
+
+      When Master_Wait =>
+        burst_cpt_rst <= '1';
+        M_rdBurst <= '0';
+        M_ABus <= sa_reg;
+        dma_master_state_next <= Master_WaitBis;
+        M_request <= '0';
+        M_wrBurst <= '0'; 
+
+      When Master_WaitBis =>
+        M_rdBurst <= '0';
+        M_size <= "1011";
+        M_ABus <= da_reg;
+        dma_master_state_next <= Master_WAdd;
+        M_request <= '0';
+        M_wrBurst <= '0'; 
+
+      when Master_WAdd =>
+        M_priority <= "00";
+        M_size <= "1011";
+        M_ABus <= da_reg;
+      
+        M_request <= '1';
+        M_wrDBus <= burst_reg(conv_integer(burst_cpt));
+        if PLB_MAddrAck = '1' then
+            M_wrBurst <= '1';
+          dma_master_state_next <= Master_Write1;
+        else
+            M_wrBurst <= '0';
+          dma_master_state_next <= Master_WAdd;
+        end if;
+
+      when Master_Write1 =>
+        M_priority <= "11";
+        M_ABus <= da_reg;
+        M_size <= "1011";
+        M_wrBurst <= '1';
+        M_request <= '0';
+        M_wrDBus <=  burst_reg(conv_integer(burst_cpt));
+        if PLB_MWrDAck = '1' then
+          if length_reg <= X"00000008" then
+            length_reg_dec <= '1';
+            M_wrBurst <= '0';
+            burst_cpt_inc <= '1';
+            dma_master_state_next <= Master_Wait2;
+          else
+            length_reg_dec <= '1';
+            M_wrBurst <= '1';
+            burst_cpt_inc <= '1';
+            dma_master_state_next <= Master_Write2;
+          end if;
+        else
+          M_wrBurst <= '1';
+          length_reg_dec <= '0';
+          burst_cpt_inc <= '0';
+          dma_master_state_next <= Master_Write1;
+        end if;
+      
+
+      when Master_Write2 =>
+        length_reg_dec <= '1';
+        M_wrDBus <=  burst_reg(conv_integer(burst_cpt));
+        M_ABus <= da_reg;
+        M_size <= "1011";
+        burst_cpt_inc <= '1';
+        if (burst_cpt >= X"0F") or (length_reg <= X"00000008") then
+          M_wrBurst <= '0';
+          dma_master_state_next <= Master_Wait2;
+        else
+          M_wrBurst <= '1';
+          dma_master_state_next <= Master_Write2; 
+        end if;
+      
+
+
+      when Master_Wait2 =>
+        M_ABus <= da_reg;
+        M_size <= "0000";
+        M_wrDBus <=  burst_reg(conv_integer(burst_cpt));
+   --     length_reg_dec <= '1';
+        sa_reg_inc <= '1';
+        da_reg_inc <= '1';
+        M_wrBurst <= '0';
+        M_abort <= '1';
+        burst_cpt_rst <= '1';
+        if length_reg <= X"00000007" then
+          dma_master_state_next <= Master_WaitAck;
+          dma_control_reg_rst <= '1';
+        else
+         dma_master_state_next <= Master_RAdd;
+         dma_control_reg_rst <= '0';
+        end if;
+       -- dma_master_state_next <= Master_Idle;
+       -- dma_control_reg_rst <= '1';
+       
+      when Master_WaitAck =>
+        -- dma_control_reg_rst <= '1';
+        if interupt = 1 then
+          DMA_Interrupt <= '1';
+          if dma_control_reg = X"12345678" then
+            dma_master_state_next <= Master_Idle;
+          else
+            dma_master_state_next <= Master_WaitAck;
+          end if;
+        else
+          dma_master_state_next <= Master_Idle;
+          DMA_Interrupt <= '0';
+        end if;
+      
+    --    M_abort <= '1';
+        
+    end case;
+  end  process DMA_MASTER_STATE;
+
+
+--   PLB_MBusy                      : in  std_logic;
+--        PLB_MErr                       : in  std_logic;
+--        PLB_MWrBTerm                   : in  std_logic;
+--        PLB_MWrDAck                    : in  std_logic;
+--        PLB_MAddrAck                   : in  std_logic;
+--        PLB_MRdBTerm                   : in  std_logic;
+--        PLB_MRdDAck                    : in  std_logic;
+--        PLB_MRdDBus                    : in  std_logic_vector(0 to (C_PLB_DWIDTH-1));
+--        PLB_MRdWdAddr                  : in  std_logic_vector(0 to 3);
+--        PLB_MRearbitrate               : in  std_logic;
+--        PLB_MSSize                     : in  std_logic_vector(0 to 1);
+
+
+
+  
+--                                M_abort       <= '0';                        
+--                                M_ABus        <= (others => '0');                  
+--                                M_BE          <= (others => '0');             
+--                                M_busLock     <= '0';       
+--                                M_compress    <= '0';  
+--                                M_guarded     <= '0';
+--                                M_lockErr     <= '0';
+--                                M_MSize       <= (others => '0');
+--                                M_ordered     <= '0';
+--                                M_priority    <= (others => '0');
+--                                M_rdBurst     <= '0';
+--                                M_request     <= '0';
+--                                M_RNW         <= '0';
+--                                M_size        <= (others => '0'); 
+--                                M_type        <= (others => '0');
+--                                M_wrBurst     <= '0';
+--                                M_wrDBus      <= (others => '0');
+
+
+
+
+end IMP;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--   ------------------------------------------
+--   -- constants : generated by wizard for instantiation - do not change
+--   ------------------------------------------
+--   -- specify address range definition identifier value, each entry with
+--   -- predefined identifier indicates inclusion of corresponding ipif
+--   -- service, following ipif mandatory service identifiers are predefined:
+--   --   IPIF_INTR
+--   --   IPIF_RST
+--   --   IPIF_SEST_SEAR
+--   --   IPIF_DMA_SG
+--   --   IPIF_WRFIFO_REG
+--   --   IPIF_WRFIFO_DATA
+--   --   IPIF_RDFIFO_REG
+--   --   IPIF_RDFIFO_DATA
+--   constant USER_MASTER                    : integer              := USER_10;
+
+--   constant ARD_ID_ARRAY                   : INTEGER_ARRAY_TYPE   := 
+--     (
+--       0  => USER_MASTER,            -- user logic master space (ip master model registers)
+--       1  => IPIF_RST,               -- ipif reset/mir service
+--       2  => IPIF_RDFIFO_REG,        -- ipif read pfifo register service
+--       3  => IPIF_RDFIFO_DATA,       -- ipif read pfifo service
+--       4  => IPIF_WRFIFO_REG,        -- ipif write pfifo register service
+--       5  => IPIF_WRFIFO_DATA        -- ipif write pfifo service
+--     );
+
+--   -- specify actual address range (defined by a pair of base address and
+--   -- high address) for each address space, which are byte relative.
+--   constant ZERO_ADDR_PAD                  : std_logic_vector(0 to 31) := (others => '0');
+
+--   constant MASTER_BASEADDR                : std_logic_vector     := C_BASEADDR or X"00000000";
+
+--   constant MASTER_HIGHADDR                : std_logic_vector     := C_BASEADDR or X"000000FF";
+
+--   constant RST_BASEADDR                   : std_logic_vector     := C_BASEADDR or X"00000100";
+
+--   constant RST_HIGHADDR                   : std_logic_vector     := C_BASEADDR or X"000001FF";
+
+--   constant RDFIFO_REG_BASEADDR            : std_logic_vector     := C_BASEADDR or X"00000200";
+
+--   constant RDFIFO_REG_HIGHADDR            : std_logic_vector     := C_BASEADDR or X"000002FF";
+
+--   constant RDFIFO_DATA_BASEADDR           : std_logic_vector     := C_BASEADDR or X"00000300";
+
+--   constant RDFIFO_DATA_HIGHADDR           : std_logic_vector     := C_BASEADDR or X"000003FF";
+
+--   constant WRFIFO_REG_BASEADDR            : std_logic_vector     := C_BASEADDR or X"00000400";
+
+--   constant WRFIFO_REG_HIGHADDR            : std_logic_vector     := C_BASEADDR or X"000004FF";
+
+--   constant WRFIFO_DATA_BASEADDR           : std_logic_vector     := C_BASEADDR or X"00000500";
+
+--   constant WRFIFO_DATA_HIGHADDR           : std_logic_vector     := C_BASEADDR or X"000005FF";
+
+--   constant ARD_ADDR_RANGE_ARRAY           : SLV64_ARRAY_TYPE     := 
+--     (
+--       ZERO_ADDR_PAD & MASTER_BASEADDR,            -- user logic master space base address
+--       ZERO_ADDR_PAD & MASTER_HIGHADDR,            -- user logic master space high address
+--       ZERO_ADDR_PAD & RST_BASEADDR,               -- ipif reset/mir base address
+--       ZERO_ADDR_PAD & RST_HIGHADDR,               -- ipif reset/mir high address
+--       ZERO_ADDR_PAD & RDFIFO_REG_BASEADDR,        -- ipif read pfifo register base address
+--       ZERO_ADDR_PAD & RDFIFO_REG_HIGHADDR,        -- ipif read pfifo register high address
+--       ZERO_ADDR_PAD & RDFIFO_DATA_BASEADDR,       -- ipif read pfifo data buffer base address
+--       ZERO_ADDR_PAD & RDFIFO_DATA_HIGHADDR,       -- ipif read pfifo data buffer high address
+--       ZERO_ADDR_PAD & WRFIFO_REG_BASEADDR,        -- ipif write pfifo register base address
+--       ZERO_ADDR_PAD & WRFIFO_REG_HIGHADDR,        -- ipif write pfifo register high address
+--       ZERO_ADDR_PAD & WRFIFO_DATA_BASEADDR,       -- ipif write pfifo data buffer base address
+--       ZERO_ADDR_PAD & WRFIFO_DATA_HIGHADDR        -- ipif write pfifo data buffer high address
+--     );
+
+--   -- specify data width for each target address range.
+--   constant USER_DWIDTH                    : integer              := 64;
+
+--   constant USER_RDFIFO_DWIDTH             : integer              := 64;
+
+--   constant USER_WRFIFO_DWIDTH             : integer              := 64;
+
+--   constant ARD_DWIDTH_ARRAY               : INTEGER_ARRAY_TYPE   := 
+--     (
+--       0  => USER_DWIDTH,            -- user logic master space data width
+--       1  => 32,                     -- ipif reset/mir data width
+--       2  => 32,                     -- ipif read pfifo register data width
+--       3  => USER_RDFIFO_DWIDTH,     -- ipif read pfifo service
+--       4  => 32,                     -- ipif write pfifo register data width
+--       5  => USER_WRFIFO_DWIDTH      -- ipif write pfifo data width
+--     );
+
+--   -- specify desired number of chip enables for each address range,
+--   -- typically one ce per register and each ipif service has its
+--   -- predefined value.
+--   constant USER_NUM_MASTER_CE             : integer              := 2;
+
+--   constant USER_NUM_CE                    : integer              := USER_NUM_MASTER_CE;
+
+--   constant ARD_NUM_CE_ARRAY               : INTEGER_ARRAY_TYPE   := 
+--     (
+--       0  => pad_power2(USER_NUM_MASTER_CE),   -- number of chip enables for user logic master space (one per register)
+--       1  => 1,                                -- ipif reset/mir service (always 1 chip enable)
+--       2  => 3,                                -- ipif read pfifo register service (always 3 chip enables)
+--       3  => 1,                                -- ipif read pfifo service (always 1 chip enable)
+--       4  => 3,                                -- ipif write pfifo register service (always 3 chip enables)
+--       5  => 1                                 -- ipif write pfifo service (always 1 chip enable)
+--     );
+
+--   -- specify unique properties for each address range, currently
+--   -- only used for packet fifo data spaces.
+--   constant USER_RDFIFO_DEPTH              : integer              := 512;
+
+--   constant USER_RDFIFO_INCLUDE_PACKET_MODE : boolean              := true;
+
+--   constant USER_RDFIFO_INCLUDE_VACANCY    : boolean              := true;
+
+--   constant USER_WRFIFO_DEPTH              : integer              := 512;
+
+--   constant USER_WRFIFO_INCLUDE_PACKET_MODE : boolean              := true;
+
+--   constant USER_WRFIFO_INCLUDE_VACANCY    : boolean              := true;
+
+--   constant USER_WRFIFO_INCLUDE_DRE        : boolean              := false;
+
+--   constant ARD_DEPENDENT_PROPS_ARRAY      : DEPENDENT_PROPS_ARRAY_TYPE := 
+--     (
+--       0  => (others => 0),          -- user logic master space dependent properties (none defined)
+--       1  => (others => 0),          -- ipif reset/mir dependent properties (none defined)
+--       2  => (others => 0),          -- ipif read pfifo register dependent properties (none defined)
+--       3  => (                       -- ipif read pfifo data dependent properties
+--               FIFO_CAPACITY_BITS  => USER_RDFIFO_DEPTH*USER_RDFIFO_DWIDTH,
+--               WR_WIDTH_BITS       => USER_RDFIFO_DWIDTH,
+--               RD_WIDTH_BITS       => USER_RDFIFO_DWIDTH,
+--               EXCLUDE_PACKET_MODE => 1-boolean'pos(USER_RDFIFO_INCLUDE_PACKET_MODE),
+--               EXCLUDE_VACANCY     => 1-boolean'pos(USER_RDFIFO_INCLUDE_VACANCY),
+--               5                   => 0,
+--               6                   => 0,
+--               7                   => 0,
+--               others => 0),
+--       4  => (others => 0),          -- ipif write pfifo register dependent properties (none defined)
+--       5  => (                       -- ipif write pfifo data dependent properties
+--               FIFO_CAPACITY_BITS  => USER_WRFIFO_DEPTH*USER_WRFIFO_DWIDTH,
+--               WR_WIDTH_BITS       => USER_WRFIFO_DWIDTH,
+--               RD_WIDTH_BITS       => USER_WRFIFO_DWIDTH,
+--               EXCLUDE_PACKET_MODE => 1-boolean'pos(USER_WRFIFO_INCLUDE_PACKET_MODE),
+--               EXCLUDE_VACANCY     => 1-boolean'pos(USER_WRFIFO_INCLUDE_VACANCY),
+--               5                   => boolean'pos(USER_WRFIFO_INCLUDE_DRE),
+--               6                   => 0,
+--               7                   => 0,
+--               others => 0)
+--     );
+
+--   -- specify determinate timing parameters to be used during read
+--   -- accesses for each address range, these values are used to optimize
+--   -- data beat timing response for burst reads from addresses sources such
+--   -- as ddr and sdram memory, each address space requires three integer
+--   -- entries for mode [0-2], latency [0-31] and wait states [0-31].
+--   constant ARD_DTIME_READ_ARRAY           : INTEGER_ARRAY_TYPE   := 
+--     (
+--       0, 0, 0,    -- user logic master space determinate read parameters
+--       0, 0, 0,    -- ipif reset/mir determinate read parameters
+--       0, 0, 0,    -- ipif read pfifo register determinate read parameters
+--       0, 0, 0,    -- ipif read pfifo data determinate read parameters
+--       0, 0, 0,    -- ipif write pfifo register determinate read parameters
+--       0, 0, 0     -- ipif write pfifo data determinate read parameters
+--     );
+
+--   -- specify determinate timing parameters to be used during write
+--   -- accesses for each address range, they not used currently, so
+--   -- all entries should be set to zeros.
+--   constant ARD_DTIME_WRITE_ARRAY          : INTEGER_ARRAY_TYPE   := 
+--     (
+--       0, 0, 0,    -- user logic master space determinate write parameters
+--       0, 0, 0,    -- ipif reset/mir determinate write parameters
+--       0, 0, 0,    -- ipif read pfifo register determinate write parameters
+--       0, 0, 0,    -- ipif read pfifo data determinate write parameters
+--       0, 0, 0,    -- ipif write pfifo register determinate write parameters
+--       0, 0, 0     -- ipif write pfifo data determinate write parameters
+--     );
+
+--   -- specify user defined device block id, which is used to uniquely
+--   -- identify a device within a system.
+--   constant DEV_BLK_ID                     : integer              := C_USER_ID_CODE;
+
+--   -- specify inclusion/omission of module information register to be
+--   -- read via the plb bus.
+--   constant DEV_MIR_ENABLE                 : integer              := 1;
+
+--   -- specify inclusion/omission of additional logic needed to support
+--   -- plb fixed burst transfers and optimized cacahline transfers.
+--   constant DEV_BURST_ENABLE               : integer              := 1;
+
+--   -- specify the maximum number of bytes that are allowed to be
+--   -- transferred in a single burst operation, currently this needs
+--   -- to be fixed at 128.
+--   constant DEV_MAX_BURST_SIZE             : integer              := 128;
+
+--   -- specify size of the largest target burstable memory space (in
+--   -- bytes and a power of 2), this is to optimize the size of the
+--   -- internal burst address counters.
+--   constant DEV_BURST_PAGE_SIZE            : integer              := 1024;
+
+--   -- specify number of plb clock cycles are allowed before a
+--   -- data phase transfer timeout, this feature is useful during
+--   -- system integration and debug.
+--   constant DEV_DPHASE_TIMEOUT             : integer              := 64;
+
+--   -- specify inclusion/omission of device interrupt source
+--   -- controller for internal ipif generated interrupts.
+--   constant INCLUDE_DEV_ISC                : integer              := 0;
+
+--   -- specify inclusion/omission of device interrupt priority
+--   -- encoder, this is useful in aiding the user interrupt service
+--   -- routine to resolve the source of an interrupt within a plb
+--   -- device incorporating an ipif.
+--   constant INCLUDE_DEV_PENCODER           : integer              := 0;
+
+--   -- specify number and capture mode of interrupt events from the
+--   -- user logic to the ip isc located in the ipif interrupt service,
+--   -- user logic interrupt event capture mode [1-6]:
+--   --   1 = Level Pass through (non-inverted)
+--   --   2 = Level Pass through (invert input)
+--   --   3 = Registered Event (non-inverted)
+--   --   4 = Registered Event (inverted input)
+--   --   5 = Rising Edge Detect
+--   --   6 = Falling Edge Detect
+--   constant IP_INTR_MODE_ARRAY             : INTEGER_ARRAY_TYPE   := 
+--     (
+--       0  => 0     -- not used
+--     );
+
+--   -- specify inclusion/omission of plb master service for user logic.
+--   constant IP_MASTER_PRESENT              : integer              := 1;
+
+--   -- specify dma type for each channel (currently only 2 channels
+--   -- supported), use following number:
+--   --   0 - simple dma
+--   --   1 - simple scatter gather
+--   --   2 - tx scatter gather with packet mode support
+--   --   3 - rx scatter gather with packet mode support
+--   constant DMA_CHAN_TYPE_ARRAY            : INTEGER_ARRAY_TYPE   := 
+--     (
+--       0 => 0     -- not used
+--     );
+
+--   -- specify maximum width in bits for dma transfer byte counters.
+--   constant DMA_LENGTH_WIDTH_ARRAY         : INTEGER_ARRAY_TYPE   := 
+--     (
+--       0 => 0     -- not used
+--     );
+
+--   -- specify address assigement for the length fifos used in
+--   -- scatter gather operation.
+--   constant DMA_PKT_LEN_FIFO_ADDR_ARRAY    : SLV64_ARRAY_TYPE     := 
+--     (
+--       0 => X"00000000_00000000"     -- not used
+--     );
+
+--   -- specify address assigement for the status fifos used in
+--   -- scatter gather operation.
+--   constant DMA_PKT_STAT_FIFO_ADDR_ARRAY   : SLV64_ARRAY_TYPE     := 
+--     (
+--       0 => X"00000000_00000000"     -- not used
+--     );
+
+--   -- specify interrupt coalescing value (number of interrupts to
+--   -- accrue before issuing interrupt to system) for each dma
+--   -- channel, apply to software design consideration.
+--   constant DMA_INTR_COALESCE_ARRAY        : INTEGER_ARRAY_TYPE   := 
+--     (
+--       0 => 0     -- not used
+--     );
+
+--   -- specify allowing dma busrt mode transactions or not.
+--   constant DMA_ALLOW_BURST                : integer              := 0;
+
+--   -- specify maximum allowed time period (in ns) a packet may wait
+--   -- before transfer by the scatter gather dma, apply to software
+--   -- design consideration.
+--   constant DMA_PACKET_WAIT_UNIT_NS        : integer              := 1000;
+
+--   -- specify period of the plb clock in picoseconds, which is used
+--   --  by the dma/sg service for timing funtions.
+--   constant PLB_CLK_PERIOD_PS              : integer              := 10000;
+
+--   -- specify ipif data bus size, used for future ipif optimization,
+--   -- should be set equal to the plb data bus width.
+--   constant IPIF_DWIDTH                    : integer              := C_PLB_DWIDTH;
+
+--   -- specify ipif address bus size, used for future ipif optimization,
+--   -- should be set equal to the plb address bus width.
+--   constant IPIF_AWIDTH                    : integer              := C_PLB_AWIDTH;
+
+--   -- specify user logic address bus width, must be same as the target bus.
+--   constant USER_AWIDTH                    : integer              := C_PLB_AWIDTH;
+
+--   -- specify index for user logic slave/master spaces chip enable.
+--   constant USER_MASTER_CE_INDEX           : integer              := calc_start_ce_index(ARD_NUM_CE_ARRAY, get_id_index(ARD_ID_ARRAY, USER_MASTER));
+
+--   ------------------------------------------
+--   -- IP Interconnect (IPIC) signal declarations -- do not delete
+--   -- prefix 'i' stands for IPIF while prefix 'u' stands for user logic
+--   -- typically user logic will be hooked up to IPIF directly via i<sig>
+--   -- unless signal slicing and muxing are needed via u<sig>
+--   ------------------------------------------
+--   signal iBus2IP_Clk                    : std_logic;
+--   signal iBus2IP_Reset                  : std_logic;
+--   signal ZERO_IP2Bus_IntrEvent          : std_logic_vector(0 to IP_INTR_MODE_ARRAY'length - 1)   := (others => '0'); -- work around for XST not taking (others => '0') in port mapping
+--   signal iIP2Bus_Data                   : std_logic_vector(0 to C_PLB_DWIDTH-1)   := (others => '0');
+--   signal iIP2Bus_WrAck                  : std_logic   := '0';
+--   signal iIP2Bus_RdAck                  : std_logic   := '0';
+--   signal iIP2Bus_Retry                  : std_logic   := '0';
+--   signal iIP2Bus_Error                  : std_logic   := '0';
+--   signal iIP2Bus_ToutSup                : std_logic   := '0';
+--   signal iBus2IP_Data                   : std_logic_vector(0 to C_PLB_DWIDTH - 1);
+--   signal iBus2IP_BE                     : std_logic_vector(0 to (C_PLB_DWIDTH/8) - 1);
+--   signal iBus2IP_Burst                  : std_logic;
+--   signal iBus2IP_WrReq                  : std_logic;
+--   signal iBus2IP_RdReq                  : std_logic;
+--   signal iBus2IP_RdCE                   : std_logic_vector(0 to calc_num_ce(ARD_NUM_CE_ARRAY)-1);
+--   signal iBus2IP_WrCE                   : std_logic_vector(0 to calc_num_ce(ARD_NUM_CE_ARRAY)-1);
+--   signal iIP2Bus_Addr                   : std_logic_vector(0 to IPIF_AWIDTH - 1)   := (others => '0');
+--   signal iIP2Bus_MstBE                  : std_logic_vector(0 to (IPIF_DWIDTH/8) - 1)   := (others => '0');
+--   signal iIP2IP_Addr                    : std_logic_vector(0 to IPIF_AWIDTH - 1)   := (others => '0');
+--   signal iIP2Bus_MstWrReq               : std_logic   := '0';
+--   signal iIP2Bus_MstRdReq               : std_logic   := '0';
+--   signal iIP2Bus_MstBurst               : std_logic   := '0';
+--   signal iIP2Bus_MstBusLock             : std_logic   := '0';
+--   signal iIP2Bus_MstNum                 : std_logic_vector(0 to log2(DEV_MAX_BURST_SIZE/(C_PLB_DWIDTH/8)))   := (others => '0');
+--   signal iBus2IP_MstWrAck               : std_logic;
+--   signal iBus2IP_MstRdAck               : std_logic;
+--   signal iBus2IP_MstRetry               : std_logic;
+--   signal iBus2IP_MstError               : std_logic;
+--   signal iBus2IP_MstTimeOut             : std_logic;
+--   signal iBus2IP_MstLastAck             : std_logic;
+--   signal iIP2RFIFO_WrReq                : std_logic   := '0';
+--   signal iIP2RFIFO_Data                 : std_logic_vector(0 to find_id_dwidth(ARD_ID_ARRAY, ARD_DWIDTH_ARRAY, IPIF_RDFIFO_DATA, 32)-1)   := (others => '0');
+--   signal iIP2RFIFO_WrMark               : std_logic   := '0';
+--   signal iIP2RFIFO_WrRelease            : std_logic   := '0';
+--   signal iIP2RFIFO_WrRestore            : std_logic   := '0';
+--   signal iRFIFO2IP_WrAck                : std_logic;
+--   signal iRFIFO2IP_AlmostFull           : std_logic;
+--   signal iRFIFO2IP_Full                 : std_logic;
+--   signal iRFIFO2IP_Vacancy              : std_logic_vector(0 to bits_needed_for_vac(find_ard_id(ARD_ID_ARRAY, IPIF_RDFIFO_DATA), ARD_DEPENDENT_PROPS_ARRAY(get_id_index_iboe(ARD_ID_ARRAY, IPIF_RDFIFO_DATA)))-1);
+--   signal iIP2WFIFO_RdReq                : std_logic   := '0';
+--   signal iIP2WFIFO_RdMark               : std_logic   := '0';
+--   signal iIP2WFIFO_RdRelease            : std_logic   := '0';
+--   signal iIP2WFIFO_RdRestore            : std_logic   := '0';
+--   signal iWFIFO2IP_Data                 : std_logic_vector(0 to find_id_dwidth(ARD_ID_ARRAY, ARD_DWIDTH_ARRAY, IPIF_WRFIFO_DATA, 32)-1);
+--   signal iWFIFO2IP_RdAck                : std_logic;
+--   signal iWFIFO2IP_AlmostEmpty          : std_logic;
+--   signal iWFIFO2IP_Empty                : std_logic;
+--   signal iWFIFO2IP_Occupancy            : std_logic_vector(0 to bits_needed_for_occ(find_ard_id(ARD_ID_ARRAY, IPIF_WRFIFO_DATA), ARD_DEPENDENT_PROPS_ARRAY(get_id_index_iboe(ARD_ID_ARRAY, IPIF_WRFIFO_DATA)))-1);
+--   signal uBus2IP_Data                   : std_logic_vector(0 to USER_DWIDTH-1);
+--   signal uBus2IP_BE                     : std_logic_vector(0 to USER_DWIDTH/8-1);
+--   signal uBus2IP_RdCE                   : std_logic_vector(0 to USER_NUM_CE-1);
+--   signal uBus2IP_WrCE                   : std_logic_vector(0 to USER_NUM_CE-1);
+--   signal uIP2Bus_Data                   : std_logic_vector(0 to USER_DWIDTH-1);
+--   signal uIP2Bus_MstBE                  : std_logic_vector(0 to USER_DWIDTH/8-1);
+
+-- begin
+
+--   ------------------------------------------
+--   -- instantiate the PLB IPIF
+--   ------------------------------------------
+--   PLB_IPIF_I : entity plb_ipif_v2_01_a.plb_ipif
+--     generic map
+--     (
+--       C_ARD_ID_ARRAY                 => ARD_ID_ARRAY,
+--       C_ARD_ADDR_RANGE_ARRAY         => ARD_ADDR_RANGE_ARRAY,
+--       C_ARD_DWIDTH_ARRAY             => ARD_DWIDTH_ARRAY,
+--       C_ARD_NUM_CE_ARRAY             => ARD_NUM_CE_ARRAY,
+--       C_ARD_DEPENDENT_PROPS_ARRAY    => ARD_DEPENDENT_PROPS_ARRAY,
+--       C_ARD_DTIME_READ_ARRAY         => ARD_DTIME_READ_ARRAY,
+--       C_ARD_DTIME_WRITE_ARRAY        => ARD_DTIME_WRITE_ARRAY,
+--       C_DEV_BLK_ID                   => DEV_BLK_ID,
+--       C_DEV_MIR_ENABLE               => DEV_MIR_ENABLE,
+--       C_DEV_BURST_ENABLE             => DEV_BURST_ENABLE,
+--       C_DEV_MAX_BURST_SIZE           => DEV_MAX_BURST_SIZE,
+--       C_DEV_BURST_PAGE_SIZE          => DEV_BURST_PAGE_SIZE,
+--       C_DEV_DPHASE_TIMEOUT           => DEV_DPHASE_TIMEOUT,
+--       C_INCLUDE_DEV_ISC              => INCLUDE_DEV_ISC,
+--       C_INCLUDE_DEV_PENCODER         => INCLUDE_DEV_PENCODER,
+--       C_IP_INTR_MODE_ARRAY           => IP_INTR_MODE_ARRAY,
+--       C_IP_MASTER_PRESENT            => IP_MASTER_PRESENT,
+--       C_DMA_CHAN_TYPE_ARRAY          => DMA_CHAN_TYPE_ARRAY,
+--       C_DMA_LENGTH_WIDTH_ARRAY       => DMA_LENGTH_WIDTH_ARRAY,
+--       C_DMA_PKT_LEN_FIFO_ADDR_ARRAY  => DMA_PKT_LEN_FIFO_ADDR_ARRAY,
+--       C_DMA_PKT_STAT_FIFO_ADDR_ARRAY => DMA_PKT_STAT_FIFO_ADDR_ARRAY,
+--       C_DMA_INTR_COALESCE_ARRAY      => DMA_INTR_COALESCE_ARRAY,
+--       C_DMA_ALLOW_BURST              => DMA_ALLOW_BURST,
+--       C_DMA_PACKET_WAIT_UNIT_NS      => DMA_PACKET_WAIT_UNIT_NS,
+--       C_PLB_MID_WIDTH                => C_PLB_MID_WIDTH,
+--       C_PLB_NUM_MASTERS              => C_PLB_NUM_MASTERS,
+--       C_PLB_AWIDTH                   => C_PLB_AWIDTH,
+--       C_PLB_DWIDTH                   => C_PLB_DWIDTH,
+--       C_PLB_CLK_PERIOD_PS            => PLB_CLK_PERIOD_PS,
+--       C_IPIF_DWIDTH                  => IPIF_DWIDTH,
+--       C_IPIF_AWIDTH                  => IPIF_AWIDTH,
+--       C_FAMILY                       => C_FAMILY
+--     )
+--     port map
+--     (
+--       PLB_clk                        => PLB_Clk,
+--       Reset                          => PLB_Rst,
+--       Freeze                         => '0',
+--       IP2INTC_Irpt                   => open,
+--       PLB_ABus                       => PLB_ABus,
+--       PLB_PAValid                    => PLB_PAValid,
+--       PLB_SAValid                    => PLB_SAValid,
+--       PLB_rdPrim                     => PLB_rdPrim,
+--       PLB_wrPrim                     => PLB_wrPrim,
+--       PLB_masterID                   => PLB_masterID,
+--       PLB_abort                      => PLB_abort,
+--       PLB_busLock                    => PLB_busLock,
+--       PLB_RNW                        => PLB_RNW,
+--       PLB_BE                         => PLB_BE,
+--       PLB_MSize                      => PLB_MSize,
+--       PLB_size                       => PLB_size,
+--       PLB_type                       => PLB_type,
+--       PLB_compress                   => PLB_compress,
+--       PLB_guarded                    => PLB_guarded,
+--       PLB_ordered                    => PLB_ordered,
+--       PLB_lockErr                    => PLB_lockErr,
+--       PLB_wrDBus                     => PLB_wrDBus,
+--       PLB_wrBurst                    => PLB_wrBurst,
+--       PLB_rdBurst                    => PLB_rdBurst,
+--       PLB_pendReq                    => PLB_pendReq,
+--       PLB_pendPri                    => PLB_pendPri,
+--       PLB_reqPri                     => PLB_reqPri,
+--       Sl_addrAck                     => Sl_addrAck,
+--       Sl_SSize                       => Sl_SSize,
+--       Sl_wait                        => Sl_wait,
+--       Sl_rearbitrate                 => Sl_rearbitrate,
+--       Sl_wrDAck                      => Sl_wrDAck,
+--       Sl_wrComp                      => Sl_wrComp,
+--       Sl_wrBTerm                     => Sl_wrBTerm,
+--       Sl_rdDBus                      => Sl_rdDBus,
+--       Sl_rdWdAddr                    => Sl_rdWdAddr,
+--       Sl_rdDAck                      => Sl_rdDAck,
+--       Sl_rdComp                      => Sl_rdComp,
+--       Sl_rdBTerm                     => Sl_rdBTerm,
+--       Sl_MBusy                       => Sl_MBusy,
+--       Sl_MErr                        => Sl_MErr,
+--       PLB_MAddrAck                   => PLB_MAddrAck,
+--       PLB_MSSize                     => PLB_MSSize,
+--       PLB_MRearbitrate               => PLB_MRearbitrate,
+--       PLB_MBusy                      => PLB_MBusy,
+--       PLB_MErr                       => PLB_MErr,
+--       PLB_MWrDAck                    => PLB_MWrDAck,
+--       PLB_MRdDBus                    => PLB_MRdDBus,
+--       PLB_MRdWdAddr                  => PLB_MRdWdAddr,
+--       PLB_MRdDAck                    => PLB_MRdDAck,
+--       PLB_MRdBTerm                   => PLB_MRdBTerm,
+--       PLB_MWrBTerm                   => PLB_MWrBTerm,
+--       M_request                      => M_request,
+--       M_priority                     => M_priority,
+--       M_busLock                      => M_busLock,
+--       M_RNW                          => M_RNW,
+--       M_BE                           => M_BE,
+--       M_MSize                        => M_MSize,
+--       M_size                         => M_size,
+--       M_type                         => M_type,
+--       M_compress                     => M_compress,
+--       M_guarded                      => M_guarded,
+--       M_ordered                      => M_ordered,
+--       M_lockErr                      => M_lockErr,
+--       M_abort                        => M_abort,
+--       M_ABus                         => M_ABus,
+--       M_wrDBus                       => M_wrDBus,
+--       M_wrBurst                      => M_wrBurst,
+--       M_rdBurst                      => M_rdBurst,
+--       IP2Bus_Clk                     => '0',
+--       Bus2IP_Clk                     => iBus2IP_Clk,
+--       Bus2IP_Reset                   => iBus2IP_Reset,
+--       Bus2IP_Freeze                  => open,
+--       IP2Bus_IntrEvent               => ZERO_IP2Bus_IntrEvent,
+--       IP2Bus_Data                    => iIP2Bus_Data,
+--       IP2Bus_WrAck                   => iIP2Bus_WrAck,
+--       IP2Bus_RdAck                   => iIP2Bus_RdAck,
+--       IP2Bus_Retry                   => iIP2Bus_Retry,
+--       IP2Bus_Error                   => iIP2Bus_Error,
+--       IP2Bus_ToutSup                 => iIP2Bus_ToutSup,
+--       IP2Bus_PostedWrInh             => '0',
+--       Bus2IP_Addr                    => open,
+--       Bus2IP_Data                    => iBus2IP_Data,
+--       Bus2IP_RNW                     => open,
+--       Bus2IP_BE                      => iBus2IP_BE,
+--       Bus2IP_Burst                   => iBus2IP_Burst,
+--       Bus2IP_WrReq                   => iBus2IP_WrReq,
+--       Bus2IP_RdReq                   => iBus2IP_RdReq,
+--       Bus2IP_CS                      => open,
+--       Bus2IP_CE                      => open,
+--       Bus2IP_RdCE                    => iBus2IP_RdCE,
+--       Bus2IP_WrCE                    => iBus2IP_WrCE,
+--       IP2DMA_RxLength_Empty          => '0',
+--       IP2DMA_RxStatus_Empty          => '0',
+--       IP2DMA_TxLength_Full           => '0',
+--       IP2DMA_TxStatus_Empty          => '0',
+--       IP2Bus_Addr                    => iIP2Bus_Addr,
+--       IP2Bus_MstBE                   => iIP2Bus_MstBE,
+--       IP2IP_Addr                     => iIP2IP_Addr,
+--       IP2Bus_MstWrReq                => iIP2Bus_MstWrReq,
+--       IP2Bus_MstRdReq                => iIP2Bus_MstRdReq,
+--       IP2Bus_MstBurst                => iIP2Bus_MstBurst,
+--       IP2Bus_MstBusLock              => iIP2Bus_MstBusLock,
+--       IP2Bus_MstNum                  => iIP2Bus_MstNum,
+--       Bus2IP_MstWrAck                => iBus2IP_MstWrAck,
+--       Bus2IP_MstRdAck                => iBus2IP_MstRdAck,
+--       Bus2IP_MstRetry                => iBus2IP_MstRetry,
+--       Bus2IP_MstError                => iBus2IP_MstError,
+--       Bus2IP_MstTimeOut              => iBus2IP_MstTimeOut,
+--       Bus2IP_MstLastAck              => iBus2IP_MstLastAck,
+--       Bus2IP_IPMstTrans              => open,
+--       IP2RFIFO_WrReq                 => iIP2RFIFO_WrReq,
+--       IP2RFIFO_Data                  => iIP2RFIFO_Data,
+--       IP2RFIFO_WrMark                => iIP2RFIFO_WrMark,
+--       IP2RFIFO_WrRelease             => iIP2RFIFO_WrRelease,
+--       IP2RFIFO_WrRestore             => iIP2RFIFO_WrRestore,
+--       RFIFO2IP_WrAck                 => iRFIFO2IP_WrAck,
+--       RFIFO2IP_AlmostFull            => iRFIFO2IP_AlmostFull,
+--       RFIFO2IP_Full                  => iRFIFO2IP_Full,
+--       RFIFO2IP_Vacancy               => iRFIFO2IP_Vacancy,
+--       IP2WFIFO_RdReq                 => iIP2WFIFO_RdReq,
+--       IP2WFIFO_RdMark                => iIP2WFIFO_RdMark,
+--       IP2WFIFO_RdRelease             => iIP2WFIFO_RdRelease,
+--       IP2WFIFO_RdRestore             => iIP2WFIFO_RdRestore,
+--       WFIFO2IP_Data                  => iWFIFO2IP_Data,
+--       WFIFO2IP_RdAck                 => iWFIFO2IP_RdAck,
+--       WFIFO2IP_AlmostEmpty           => iWFIFO2IP_AlmostEmpty,
+--       WFIFO2IP_Empty                 => iWFIFO2IP_Empty,
+--       WFIFO2IP_Occupancy             => iWFIFO2IP_Occupancy,
+--       IP2Bus_DMA_Req                 => '0',
+--       Bus2IP_DMA_Ack                 => open
+--     );
+
+--   ------------------------------------------
+--   -- instantiate the User Logic
+--   ------------------------------------------
+--   USER_LOGIC_I : entity idma_v1_00_a.user_logic
+--     generic map
+--     (
+--       -- MAP USER GENERICS BELOW THIS LINE ---------------
+--       --USER generics mapped here
+--       -- MAP USER GENERICS ABOVE THIS LINE ---------------
+
+--       C_AWIDTH                       => USER_AWIDTH,
+--       C_DWIDTH                       => USER_DWIDTH,
+--       C_NUM_CE                       => USER_NUM_CE,
+--       C_RDFIFO_DWIDTH                => USER_RDFIFO_DWIDTH,
+--       C_RDFIFO_DEPTH                 => USER_RDFIFO_DEPTH,
+--       C_WRFIFO_DWIDTH                => USER_WRFIFO_DWIDTH,
+--       C_WRFIFO_DEPTH                 => USER_WRFIFO_DEPTH
+--     )
+--     port map
+--     (
+--       -- MAP USER PORTS BELOW THIS LINE ------------------
+--       --USER ports mapped here
+--       -- MAP USER PORTS ABOVE THIS LINE ------------------
+
+--       Bus2IP_Clk                     => iBus2IP_Clk,
+--       Bus2IP_Reset                   => iBus2IP_Reset,
+--       Bus2IP_Data                    => uBus2IP_Data,
+--       Bus2IP_BE                      => uBus2IP_BE,
+--       Bus2IP_Burst                   => iBus2IP_Burst,
+--       Bus2IP_RdCE                    => uBus2IP_RdCE,
+--       Bus2IP_WrCE                    => uBus2IP_WrCE,
+--       Bus2IP_RdReq                   => iBus2IP_RdReq,
+--       Bus2IP_WrReq                   => iBus2IP_WrReq,
+--       IP2Bus_Data                    => uIP2Bus_Data,
+--       IP2Bus_Retry                   => iIP2Bus_Retry,
+--       IP2Bus_Error                   => iIP2Bus_Error,
+--       IP2Bus_ToutSup                 => iIP2Bus_ToutSup,
+--       IP2Bus_RdAck                   => iIP2Bus_RdAck,
+--       IP2Bus_WrAck                   => iIP2Bus_WrAck,
+--       Bus2IP_MstError                => iBus2IP_MstError,
+--       Bus2IP_MstLastAck              => iBus2IP_MstLastAck,
+--       Bus2IP_MstRdAck                => iBus2IP_MstRdAck,
+--       Bus2IP_MstWrAck                => iBus2IP_MstWrAck,
+--       Bus2IP_MstRetry                => iBus2IP_MstRetry,
+--       Bus2IP_MstTimeOut              => iBus2IP_MstTimeOut,
+--       IP2Bus_Addr                    => iIP2Bus_Addr,
+--       IP2Bus_MstBE                   => uIP2Bus_MstBE,
+--       IP2Bus_MstBurst                => iIP2Bus_MstBurst,
+--       IP2Bus_MstBusLock              => iIP2Bus_MstBusLock,
+--       IP2Bus_MstNum                  => iIP2Bus_MstNum,
+--       IP2Bus_MstRdReq                => iIP2Bus_MstRdReq,
+--       IP2Bus_MstWrReq                => iIP2Bus_MstWrReq,
+--       IP2IP_Addr                     => iIP2IP_Addr,
+--       IP2RFIFO_WrReq                 => iIP2RFIFO_WrReq,
+--       IP2RFIFO_Data                  => iIP2RFIFO_Data,
+--       IP2RFIFO_WrMark                => iIP2RFIFO_WrMark,
+--       IP2RFIFO_WrRelease             => iIP2RFIFO_WrRelease,
+--       IP2RFIFO_WrRestore             => iIP2RFIFO_WrRestore,
+--       RFIFO2IP_WrAck                 => iRFIFO2IP_WrAck,
+--       RFIFO2IP_AlmostFull            => iRFIFO2IP_AlmostFull,
+--       RFIFO2IP_Full                  => iRFIFO2IP_Full,
+--       RFIFO2IP_Vacancy               => iRFIFO2IP_Vacancy,
+--       IP2WFIFO_RdReq                 => iIP2WFIFO_RdReq,
+--       IP2WFIFO_RdMark                => iIP2WFIFO_RdMark,
+--       IP2WFIFO_RdRelease             => iIP2WFIFO_RdRelease,
+--       IP2WFIFO_RdRestore             => iIP2WFIFO_RdRestore,
+--       WFIFO2IP_Data                  => iWFIFO2IP_Data,
+--       WFIFO2IP_RdAck                 => iWFIFO2IP_RdAck,
+--       WFIFO2IP_AlmostEmpty           => iWFIFO2IP_AlmostEmpty,
+--       WFIFO2IP_Empty                 => iWFIFO2IP_Empty,
+--       WFIFO2IP_Occupancy             => iWFIFO2IP_Occupancy
+--     );
+
+--   ------------------------------------------
+--   -- hooking up signal slicing
+--   ------------------------------------------
+--   iIP2Bus_MstBE <= uIP2Bus_MstBE;
+--   uBus2IP_Data <= iBus2IP_Data(0 to USER_DWIDTH-1);
+--   uBus2IP_BE <= iBus2IP_BE(0 to USER_DWIDTH/8-1);
+--   uBus2IP_RdCE(0 to USER_NUM_MASTER_CE-1) <= iBus2IP_RdCE(USER_MASTER_CE_INDEX to USER_MASTER_CE_INDEX+USER_NUM_MASTER_CE-1);
+--   uBus2IP_WrCE(0 to USER_NUM_MASTER_CE-1) <= iBus2IP_WrCE(USER_MASTER_CE_INDEX to USER_MASTER_CE_INDEX+USER_NUM_MASTER_CE-1);
+--   iIP2Bus_Data(0 to USER_DWIDTH-1) <= uIP2Bus_Data;
+
+-- end IMP;

@@ -1,0 +1,11 @@
+run
+-opt_level 2
+-opt_mode speed
+-ifmt mixed
+-ifn /home/teixeiro/igam/Asgard/pcores/idma_v1_00_a/devl/synthesis/idma_xst.prj
+-top idma
+-p virtex2p
+-ofn /home/teixeiro/igam/Asgard/pcores/idma_v1_00_a/devl/synthesis/idma_xst.ngc
+-iobuf NO
+-rtlview YES
+-hierarchy_separator /

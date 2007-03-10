@@ -1,0 +1,15 @@
+##############################################################################
+## Filename:          C:\IGAM\testing_system_vga/drivers/isprite_v1_00_a/data/isprite_v2_1_0.mdd
+## Description:       Microprocessor Driver Definition
+## Date:              Fri Feb 02 14:50:13 2007 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+OPTION psf_version = 2.1.0;
+
+BEGIN DRIVER ivga
+
+  OPTION supported_peripherals = (isprite);
+  OPTION depends = (common_v1_00_a);
+  OPTION copyfiles = all;
+
+END DRIVER

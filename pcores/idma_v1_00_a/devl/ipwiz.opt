@@ -1,0 +1,14 @@
+-batch 
+-create idma 
+-ver 1.00.a 
+-dir /home/teixeiro/igam/Asgard 
+-lang vhdl 
+-bus plb ms 
+-burst 
+-rstmir 
+-ipmst 
+-rfifo 4 64 512 
+-wfifo 4 64 512 
+-xps 
+-ise 
+-driver 

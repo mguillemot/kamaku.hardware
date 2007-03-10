@@ -1,0 +1,8 @@
+xst -ise "/home/squale/igam/testing_system/pcores/idma_v1_00_a/devl/projnav/idma" -intstyle ise -ifn idma.xst -ofn idma.syr
+xst -ise "/home/squale/igam/testing_system/pcores/idma_v1_00_a/devl/projnav/idma" -intstyle ise -ifn idma.xst -ofn idma.syr
+xst -ise "/home/squale/igam/testing_system/pcores/idma_v1_00_a/devl/projnav/idma" -intstyle ise -ifn idma.xst -ofn idma.syr
+ngdbuild -ise "/home/squale/igam/testing_system/pcores/idma_v1_00_a/devl/projnav/idma" -intstyle ise -dd _ngo -nt timestamp -i -p xc2vp30-ff896-7 idma.ngc idma.ngd
+map -ise "/home/squale/igam/testing_system/pcores/idma_v1_00_a/devl/projnav/idma" -intstyle ise -p xc2vp30-ff896-7 -cm area -pr b -k 4 -c 100 -tx off -o idma_map.ncd idma.ngd idma.pcf
+par -ise "/home/squale/igam/testing_system/pcores/idma_v1_00_a/devl/projnav/idma" -w -intstyle ise -ol std -t 1 idma_map.ncd idma.ncd idma.pcf
+trce -ise "/home/squale/igam/testing_system/pcores/idma_v1_00_a/devl/projnav/idma" -intstyle ise -e 3 -l 3 -s 7 -xml idma idma.ncd -o idma.twr idma.pcf
+xst -ise "/home/squale/igam/testing_system/pcores/idma_v1_00_a/devl/projnav/idma" -intstyle ise -ifn idma.xst -ofn idma.syr

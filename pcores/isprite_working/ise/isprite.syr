@@ -1,0 +1,863 @@
+Release 8.1.03i - xst I.27
+Copyright (c) 1995-2005 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to ./xst/projnav.tmp
+CPU : 0.00 / 0.84 s | Elapsed : 0.00 / 0.00 s
+ 
+--> Parameter xsthdpdir set to ./xst
+CPU : 0.00 / 0.84 s | Elapsed : 0.00 / 0.00 s
+ 
+--> Reading design: isprite.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) HDL Analysis
+  4) HDL Synthesis
+     4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+     5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Final Report
+     7.1) Device utilization summary
+     7.2) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "isprite.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "isprite"
+Output Format                      : NGC
+Target Device                      : xc2vp30-7-ff896
+
+---- Source Options
+Top Module Name                    : isprite
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+FSM Style                          : lut
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : YES
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : YES
+Resource Sharing                   : YES
+Multiplier Style                   : auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Slice Packing                      : YES
+Pack IO Registers into IOBs        : auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : NO
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Write Timing Constraints           : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+Slice Utilization Ratio            : 100
+Slice Utilization Ratio Delta      : 5
+
+---- Other Options
+lso                                : isprite.lso
+Read Cores                         : YES
+cross_clock_analysis               : NO
+verilog2001                        : YES
+safe_implementation                : No
+Optimize Instantiated Primitives   : NO
+tristate2logic                     : Yes
+use_clock_enable                   : Yes
+use_sync_set                       : Yes
+use_sync_reset                     : Yes
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/IGAM/testing_system_vga/pcores/isprite_working/isprite.vhd" in Library work.
+Entity <isprite> compiled.
+Entity <isprite> (Architecture <imp>) compiled.
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <isprite> (Architecture <imp>).
+WARNING:Xst:766 - "C:/IGAM/testing_system_vga/pcores/isprite_working/isprite.vhd" line 247: Generating a Black Box for component <sprite_ram>.
+WARNING:Xst:766 - "C:/IGAM/testing_system_vga/pcores/isprite_working/isprite.vhd" line 255: Generating a Black Box for component <sprite_transparency_ram>.
+WARNING:Xst:766 - "C:/IGAM/testing_system_vga/pcores/isprite_working/isprite.vhd" line 263: Generating a Black Box for component <bg_ram>.
+Entity <isprite> analyzed. Unit <isprite> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+INFO:Xst:1304 - Contents of register <slave_slice> in unit <isprite> never changes during circuit operation. The register is replaced by logic.
+
+Synthesizing Unit <isprite>.
+    Related source file is "C:/IGAM/testing_system_vga/pcores/isprite_working/isprite.vhd".
+WARNING:Xst:647 - Input <PLB_pendPri> is never used.
+WARNING:Xst:1306 - Output <Sl_rearbitrate> is never assigned.
+WARNING:Xst:1306 - Output <Isprite_Debug<63>> is never assigned.
+WARNING:Xst:1306 - Output <Isprite_Debug<57:52>> is never assigned.
+WARNING:Xst:647 - Input <PLB_wrPrim> is never used.
+WARNING:Xst:647 - Input <PLB_MSize> is never used.
+WARNING:Xst:1306 - Output <Sl_MErr> is never assigned.
+WARNING:Xst:647 - Input <PLB_MWrBTerm> is never used.
+WARNING:Xst:1306 - Output <Isprite_Interrupt> is never assigned.
+WARNING:Xst:1306 - Output <Sl_wrBTerm> is never assigned.
+WARNING:Xst:647 - Input <PLB_rdBurst> is never used.
+WARNING:Xst:647 - Input <PLB_masterID> is never used.
+WARNING:Xst:647 - Input <PLB_SAValid> is never used.
+WARNING:Xst:647 - Input <PLB_PAValid> is never used.
+WARNING:Xst:647 - Input <PLB_size> is never used.
+WARNING:Xst:647 - Input <PLB_MRdWdAddr> is never used.
+WARNING:Xst:647 - Input <PLB_guarded> is never used.
+WARNING:Xst:647 - Input <PLB_busLock> is never used.
+WARNING:Xst:647 - Input <PLB_MBusy> is never used.
+WARNING:Xst:1306 - Output <Sl_SSize> is never assigned.
+WARNING:Xst:647 - Input <PLB_MSSize> is never used.
+WARNING:Xst:647 - Input <PLB_wrDBus<0:31>> is never used.
+WARNING:Xst:647 - Input <PLB_BE> is never used.
+WARNING:Xst:1306 - Output <Sl_MBusy> is never assigned.
+WARNING:Xst:647 - Input <PLB_reqPri> is never used.
+WARNING:Xst:647 - Input <PLB_lockErr> is never used.
+WARNING:Xst:1306 - Output <Sl_rdWdAddr> is never assigned.
+WARNING:Xst:647 - Input <PLB_MRdBTerm> is never used.
+WARNING:Xst:647 - Input <PLB_wrBurst> is never used.
+WARNING:Xst:647 - Input <PLB_ordered> is never used.
+WARNING:Xst:647 - Input <PLB_compress> is never used.
+WARNING:Xst:1306 - Output <Sl_rdBTerm> is never assigned.
+WARNING:Xst:647 - Input <PLB_rdPrim> is never used.
+WARNING:Xst:647 - Input <PLB_MRearbitrate> is never used.
+WARNING:Xst:647 - Input <PLB_ABus> is never used.
+WARNING:Xst:647 - Input <PLB_abort> is never used.
+WARNING:Xst:647 - Input <PLB_MErr> is never used.
+WARNING:Xst:647 - Input <PLB_type> is never used.
+WARNING:Xst:647 - Input <PLB_pendReq> is never used.
+WARNING:Xst:646 - Signal <slave_slice<0:26>> is assigned but never used.
+WARNING:Xst:646 - Signal <slave_slice<29:31>> is assigned but never used.
+WARNING:Xst:646 - Signal <sprite_height<15:7>> is assigned but never used.
+WARNING:Xst:646 - Signal <sprite_width<15:7>> is assigned but never used.
+INFO:Xst:1799 - State master_write_skipline is never reached in FSM <master_state_current>.
+INFO:Xst:1799 - State slave_read is never reached in FSM <slave_state_current>.
+INFO:Xst:1799 - State slave_write is never reached in FSM <slave_state_current>.
+INFO:Xst:1799 - State slave_addack is never reached in FSM <slave_state_current>.
+INFO:Xst:1799 - State slave_read2 is never reached in FSM <slave_state_current>.
+INFO:Xst:1799 - State slave_write2 is never reached in FSM <slave_state_current>.
+    Found finite state machine <FSM_0> for signal <master_state_current>.
+    -----------------------------------------------------------------------
+    | States             | 13                                             |
+    | Transitions        | 31                                             |
+    | Inputs             | 10                                             |
+    | Outputs            | 13                                             |
+    | Clock              | PLB_Clk (rising_edge)                          |
+    | Reset              | PLB_Rst (positive)                             |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | master_idle                                    |
+    | Power Up State     | master_idle                                    |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found finite state machine <FSM_1> for signal <slave_state_current>.
+    -----------------------------------------------------------------------
+    | States             | 1                                              |
+    | Transitions        | 1                                              |
+    | Inputs             | 1                                              |
+    | Outputs            | 1                                              |
+    | Clock              | PLB_Clk (rising_edge)                          |
+    | Reset              | PLB_Rst (positive)                             |
+    | Reset type         | asynchronous                                   |
+    | Reset State        | slave_idle                                     |
+    | Power Up State     | slave_idle                                     |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 4x2-bit ROM for signal <shift>.
+    Found 4x1-bit ROM for signal <$n0244>.
+    Found 7-bit adder for signal <$n0000> created at line 311.
+    Found 7-bit adder for signal <$n0001> created at line 312.
+    Found 7-bit adder for signal <$n0002> created at line 316.
+    Found 7-bit adder for signal <$n0003> created at line 317.
+    Found 7-bit adder for signal <$n0004> created at line 321.
+    Found 7-bit adder for signal <$n0005> created at line 322.
+    Found 5-bit subtractor for signal <$n0143> created at line 773.
+    Found 7-bit subtractor for signal <$n0144> created at line 774.
+    Found 29-bit adder for signal <$n0153> created at line 829.
+    Found 4-bit comparator equal for signal <$n0166> created at line 776.
+    Found 6-bit comparator equal for signal <$n0167> created at line 777.
+    Found 5-bit comparator equal for signal <$n0169> created at line 845.
+    Found 5-bit comparator equal for signal <$n0170> created at line 907.
+    Found 5-bit 4-to-1 multiplexer for signal <$n0196>.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0198> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0199> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0200> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0201> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0202> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0203> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0204> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0205> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0206> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0207> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0208> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0209> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0210> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0211> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0212> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0213> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0214> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0215> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0216> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0217> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0219> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0221> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0223> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0226> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0228> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0229> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0231> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0233> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0235> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0237> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0239> created at line 364.
+    Found 1-bit 4-to-1 multiplexer for signal <$n0240> created at line 364.
+    Found 5-bit subtractor for signal <$n0310> created at line 842.
+    Found 6-bit subtractor for signal <$n0311> created at line 640.
+    Found 5-bit subtractor for signal <$n0313> created at line 333.
+    Found 6-bit adder for signal <$n0316> created at line 639.
+    Found 6-bit subtractor for signal <$n0321> created at line 416.
+    Found 6-bit adder for signal <$n0322> created at line 656.
+    Found 5-bit adder for signal <$n0323> created at line 518.
+    Found 5-bit adder for signal <$n0324> created at line 842.
+    Found 5-bit subtractor for signal <$n0325> created at line 336.
+    Found 5-bit comparator equal for signal <$n0335> created at line 383.
+    Found 6-bit comparator equal for signal <$n0345> created at line 640.
+    Found 6-bit comparator not equal for signal <$n0348> created at line 640.
+    Found 6-bit up counter for signal <bg_ram_addr>.
+    Found 32-bit register for signal <control>.
+    Found 1-bit register for signal <control_rst>.
+    Found 32-bit register for signal <destination>.
+    Found 32-bit up accumulator for signal <destination_ptr>.
+    Found 5-bit 4-to-1 multiplexer for signal <endprem>.
+    Found 5-bit addsub for signal <op_length>.
+    Found 5-bit 4-to-1 multiplexer for signal <skip>.
+    Found 32-bit register for signal <source>.
+    Found 32-bit register for signal <source_ptr>.
+    Found 5-bit register for signal <sprite_ram_addr_col>.
+    Found 6-bit up counter for signal <sprite_ram_addr_row>.
+    Found 32-bit register for signal <sprite_size>.
+    Found 48-bit register for signal <sprite_skip_buffer>.
+    Found 1-bit register for signal <start_read_sprite>.
+    Found 1-bit register for signal <start_write_sprite>.
+    Found 1-bit register for signal <transp_header_complete>.
+    Found 1-bit register for signal <transp_it>.
+    Found 6-bit register for signal <transp_tf>.
+    Found 6-bit register for signal <transp_th>.
+    Summary:
+	inferred   2 Finite State Machine(s).
+	inferred   2 ROM(s).
+	inferred   2 Counter(s).
+	inferred   1 Accumulator(s).
+	inferred 230 D-type flip-flop(s).
+	inferred  19 Adder/Subtractor(s).
+	inferred   7 Comparator(s).
+	inferred  47 Multiplexer(s).
+Unit <isprite> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 2
+ 4x1-bit ROM                                           : 1
+ 4x2-bit ROM                                           : 1
+# Adders/Subtractors                                   : 19
+ 29-bit adder                                          : 1
+ 5-bit adder                                           : 2
+ 5-bit addsub                                          : 1
+ 5-bit subtractor                                      : 4
+ 6-bit adder                                           : 2
+ 6-bit subtractor                                      : 2
+ 7-bit adder                                           : 6
+ 7-bit subtractor                                      : 1
+# Counters                                             : 2
+ 6-bit up counter                                      : 2
+# Accumulators                                         : 1
+ 32-bit up accumulator                                 : 1
+# Registers                                            : 92
+ 1-bit register                                        : 85
+ 32-bit register                                       : 4
+ 5-bit register                                        : 1
+ 6-bit register                                        : 2
+# Comparators                                          : 7
+ 4-bit comparator equal                                : 1
+ 5-bit comparator equal                                : 3
+ 6-bit comparator equal                                : 2
+ 6-bit comparator not equal                            : 1
+# Multiplexers                                         : 35
+ 1-bit 4-to-1 multiplexer                              : 32
+ 5-bit 4-to-1 multiplexer                              : 3
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <master_state_current> on signal <master_state_current[1:13]> with one-hot encoding.
+------------------------------------------
+ State                   | Encoding
+------------------------------------------
+ master_idle             | 0000000000001
+ master_startblit        | 0000000000100
+ master_sprite_radd      | 0000000000010
+ master_sprite_read1     | 0000000001000
+ master_sprite_readended | 0000000010000
+ master_bg_radd          | 0000001000000
+ master_bg_readburst     | 0000100000000
+ master_bg_readsingle    | 0000010000000
+ master_ended            | 0000000100000
+ master_wadd             | 0001000000000
+ master_write_skipline   | unreached
+ master_writeburst       | 0100000000000
+ master_writesingle      | 0010000000000
+ master_write2           | 1000000000000
+------------------------------------------
+Reading core <sprite_ram.ngc>.
+Reading core <sprite_transparency_ram.ngc>.
+Reading core <bg_ram.ngc>.
+Loading core <sprite_ram> for timing and area information for instance <the_sprite_ram>.
+Loading core <sprite_transparency_ram> for timing and area information for instance <the_sprite_transparency_ram>.
+Loading core <bg_ram> for timing and area information for instance <the_bg_ram>.
+WARNING:Xst:1293 - FF/Latch  <source_ptr_26> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_27> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_29> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_30> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_28> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_31> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_31> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_30> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_29> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_28> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_27> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_26> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_25> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_24> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_23> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_22> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_21> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_20> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_19> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_18> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_17> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_16> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_15> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_14> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_13> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_12> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_11> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_10> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <control_1> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <control_0> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_0> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_1> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_2> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_4> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_5> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_3> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_6> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_7> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_9> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_10> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_8> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_11> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_12> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_14> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_15> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_13> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_16> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_17> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_19> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_20> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_18> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_21> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_22> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_24> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_25> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_ptr_23> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_27> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_26> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_25> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_24> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_23> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_22> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_21> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_20> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_19> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_18> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_17> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_16> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_15> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_14> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_13> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_12> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_11> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_10> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_9> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_8> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_7> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_6> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_5> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_4> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_3> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_2> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_1> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_0> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_9> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_8> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_7> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_6> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_5> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_4> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_3> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_2> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_1> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_0> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <start_write_sprite> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <sprite_size_22> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <sprite_size_21> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <sprite_size_20> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <sprite_size_19> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <sprite_size_18> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <sprite_size_17> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <sprite_size_16> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <sprite_size_6> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <sprite_size_5> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <sprite_size_4> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <sprite_size_3> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <sprite_size_2> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <sprite_size_1> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <sprite_size_0> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_31> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_30> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_29> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <source_28> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <start_read_sprite> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_size_7> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_size_8> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_size_9> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_size_10> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_size_11> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_size_12> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_size_13> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_size_14> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_size_15> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_size_23> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_size_24> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_size_25> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_size_26> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_size_27> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_size_28> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_size_29> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_size_30> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_size_31> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_2> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_3> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_4> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_5> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_6> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_7> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_8> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_9> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_10> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_11> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_12> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_13> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_14> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_15> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_16> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_17> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_18> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_19> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_20> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_21> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_22> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_23> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_24> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_25> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_26> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_27> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_28> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_29> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_30> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_31> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <control_rst> is unconnected in block <isprite>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 1
+# ROMs                                                 : 2
+ 4x1-bit ROM                                           : 1
+ 4x2-bit ROM                                           : 1
+# Adders/Subtractors                                   : 19
+ 29-bit adder                                          : 1
+ 5-bit adder                                           : 2
+ 5-bit addsub                                          : 1
+ 5-bit subtractor                                      : 4
+ 6-bit adder                                           : 2
+ 6-bit subtractor                                      : 2
+ 7-bit adder                                           : 6
+ 7-bit subtractor                                      : 1
+# Counters                                             : 2
+ 6-bit up counter                                      : 2
+# Accumulators                                         : 1
+ 32-bit up accumulator                                 : 1
+# Registers                                            : 118
+ Flip-Flops                                            : 118
+# Comparators                                          : 7
+ 4-bit comparator equal                                : 1
+ 5-bit comparator equal                                : 3
+ 6-bit comparator equal                                : 2
+ 6-bit comparator not equal                            : 1
+# Multiplexers                                         : 35
+ 1-bit 4-to-1 multiplexer                              : 32
+ 5-bit 4-to-1 multiplexer                              : 3
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1988 - Unit <isprite>: instances <Mcompar__n0345>, <Mcompar__n0348> of unit <LPM_COMPARE_2> and unit <LPM_COMPARE_4> are dual, second instance is removed
+WARNING:Xst:1293 - FF/Latch  <FFd10> has a constant value of 0 in block <FSM_0>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <FFd9> has a constant value of 0 in block <FSM_0>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <FFd13> has a constant value of 1 in block <FSM_0>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <FFd11> has a constant value of 0 in block <FSM_0>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <FFd12> has a constant value of 0 in block <FSM_0>.
+Loading device for application Rf_Device from file '2vp30.nph' in environment C:\Xilinx.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_33> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_32> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_34> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_40> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_35> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_36> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_37> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_41> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_42> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_38> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_43> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_39> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_44> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_45> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_46> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_47> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_10> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_13> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_11> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_12> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_14> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_15> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_21> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_20> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_16> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_17> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_22> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_19> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_18> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_23> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_24> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_26> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_25> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_30> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_31> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_27> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_28> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_29> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_0> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_1> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_2> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_3> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_4> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_5> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_6> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_7> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_9> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <sprite_skip_buffer_8> is unconnected in block <isprite>.
+WARNING:Xst:637 - Naming conflict between signal Q<2> of unit destination_ptr and signal destination_ptr_Q<2> of unit isprite : renaming destination_ptr_Q<2> to destination_ptr_Q<2>1.
+WARNING:Xst:637 - Naming conflict between signal Q<1> of unit destination_ptr and signal destination_ptr_Q<1> of unit isprite : renaming destination_ptr_Q<1> to destination_ptr_Q<1>1.
+WARNING:Xst:637 - Naming conflict between signal Q<0> of unit destination_ptr and signal destination_ptr_Q<0> of unit isprite : renaming destination_ptr_Q<0> to destination_ptr_Q<0>1.
+WARNING:Xst:1293 - FF/Latch  <destination_ptr_24> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_23> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_22> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_21> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_20> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_19> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_18> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_17> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_16> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_15> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_14> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_13> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_12> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_11> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_10> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_9> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_8> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_7> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_6> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_5> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_4> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_3> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <transp_it> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <transp_tf_0> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <transp_tf_1> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <transp_tf_2> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <transp_tf_3> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <transp_tf_4> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <transp_tf_5> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <transp_th_0> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <transp_th_1> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <transp_th_2> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <transp_th_3> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <transp_th_4> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <transp_th_5> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <transp_header_complete> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <bg_ram_addr_5> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <bg_ram_addr_4> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_31> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_30> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_29> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_28> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_27> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_26> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <destination_ptr_25> has a constant value of 0 in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <destination_ptr_2> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <destination_ptr_1> is unconnected in block <isprite>.
+WARNING:Xst:1291 - FF/Latch <destination_ptr_0> is unconnected in block <isprite>.
+
+Optimizing unit <isprite> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block isprite, actual ratio is 1.
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : isprite.ngr
+Top Level Output File Name         : isprite
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 563
+
+Cell Usage :
+# BELS                             : 202
+#      GND                         : 4
+#      INV                         : 5
+#      LUT2                        : 10
+#      LUT2_L                      : 1
+#      LUT3                        : 80
+#      LUT3_D                      : 2
+#      LUT3_L                      : 3
+#      LUT4                        : 70
+#      LUT4_D                      : 5
+#      LUT4_L                      : 15
+#      MUXF5                       : 2
+#      MUXF6                       : 1
+#      VCC                         : 4
+# FlipFlops/Latches                : 164
+#      FDC                         : 8
+#      FDCE                        : 11
+#      FDCPE                       : 4
+#      FDRE                        : 141
+# RAMS                             : 7
+#      RAMB16_S18_S18              : 4
+#      RAMB16_S36_S36              : 3
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 384
+#      IBUF                        : 68
+#      OBUF                        : 316
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 2vp30ff896-7 
+
+ Number of Slices:                     184  out of  13696     1%  
+ Number of Slice Flip Flops:           164  out of  27392     0%  
+ Number of 4 input LUTs:               186  out of  27392     0%  
+ Number of bonded IOBs:                385  out of    556    69%  
+ Number of BRAMs:                        7  out of    136     5%  
+ Number of GCLKs:                        1  out of     16     6%  
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+----------------------------------------+------------------------+-------+
+Clock Signal                            | Clock buffer(FF name)  | Load  |
+----------------------------------------+------------------------+-------+
+PLB_Clk                                 | BUFGP                  | 171   |
+the_sprite_ram/BU2/doutb(0)             | NONE                   | 4     |
+the_sprite_transparency_ram/BU2/doutb(0)| NONE                   | 1     |
+the_bg_ram/BU2/doutb(0)                 | NONE                   | 2     |
+----------------------------------------+------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Timing Summary:
+---------------
+Speed Grade: -7
+
+   Minimum period: 4.946ns (Maximum Frequency: 202.179MHz)
+   Minimum input arrival time before clock: 3.569ns
+   Maximum output required time after clock: 6.781ns
+   Maximum combinational path delay: 4.639ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'PLB_Clk'
+  Clock period: 4.946ns (frequency: 202.179MHz)
+  Total number of paths / destination ports: 1881 / 205
+-------------------------------------------------------------------------
+Delay:               4.946ns (Levels of Logic = 7)
+  Source:            the_sprite_transparency_ram/BU2/U0/blk_mem_generator/cstr/douta_i_3 (FF)
+  Destination:       bg_ram_addr_3 (FF)
+  Source Clock:      PLB_Clk rising
+  Destination Clock: PLB_Clk rising
+
+  Data Path: the_sprite_transparency_ram/BU2/U0/blk_mem_generator/cstr/douta_i_3 to bg_ram_addr_3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q            16   0.370   0.728  U0/blk_mem_generator/cstr/douta_i_3 (douta(3))
+     end scope: 'BU2'
+     end scope: 'the_sprite_transparency_ram'
+     LUT4_D:I1->LO         1   0.275   0.118  Ker151 (N708)
+     LUT3:I2->O            5   0.275   0.466  isprite__n0324<2>cy11 (isprite__n0324<2>_cyo)
+     LUT4:I3->O            1   0.275   0.349  _n01695153_SW1 (N655)
+     LUT4:I2->O            4   0.275   0.451  _n01695153 (N558)
+     LUT4_L:I3->LO         1   0.275   0.138  bg_ram_addr_inc_SW0 (N308)
+     LUT4:I3->O            4   0.275   0.413  bg_ram_addr_inc (bg_ram_addr_inc)
+     FDCPE:CE                  0.263          bg_ram_addr_1
+    ----------------------------------------
+    Total                      4.946ns (2.283ns logic, 2.663ns route)
+                                       (46.2% logic, 53.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'PLB_Clk'
+  Total number of paths / destination ports: 166 / 145
+-------------------------------------------------------------------------
+Offset:              3.569ns (Levels of Logic = 4)
+  Source:            PLB_MAddrAck (PAD)
+  Destination:       bg_ram_addr_3 (FF)
+  Destination Clock: PLB_Clk rising
+
+  Data Path: PLB_MAddrAck to bg_ram_addr_3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             8   0.878   0.576  PLB_MAddrAck_IBUF (PLB_MAddrAck_IBUF)
+     LUT2:I1->O            2   0.275   0.476  Ker301 (N30)
+     LUT4_L:I1->LO         1   0.275   0.138  bg_ram_addr_inc_SW0 (N308)
+     LUT4:I3->O            4   0.275   0.413  bg_ram_addr_inc (bg_ram_addr_inc)
+     FDCPE:CE                  0.263          bg_ram_addr_1
+    ----------------------------------------
+    Total                      3.569ns (1.966ns logic, 1.603ns route)
+                                       (55.1% logic, 44.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'PLB_Clk'
+  Total number of paths / destination ports: 1557 / 196
+-------------------------------------------------------------------------
+Offset:              6.781ns (Levels of Logic = 7)
+  Source:            the_sprite_transparency_ram/BU2/U0/blk_mem_generator/cstr/douta_i_3 (FF)
+  Destination:       M_rdBurst (PAD)
+  Source Clock:      PLB_Clk rising
+
+  Data Path: the_sprite_transparency_ram/BU2/U0/blk_mem_generator/cstr/douta_i_3 to M_rdBurst
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q            16   0.370   0.728  U0/blk_mem_generator/cstr/douta_i_3 (douta(3))
+     end scope: 'BU2'
+     end scope: 'the_sprite_transparency_ram'
+     LUT4_D:I1->LO         1   0.275   0.118  Ker151 (N708)
+     LUT3:I2->O            5   0.275   0.466  isprite__n0324<2>cy11 (isprite__n0324<2>_cyo)
+     LUT4:I3->O            1   0.275   0.350  _n01695153_SW1 (N655)
+     LUT4:I2->O            4   0.275   0.451  _n01695153 (N558)
+     LUT4:I3->O            1   0.275   0.332  M_rdBurst1 (M_rdBurst_OBUF)
+     OBUF:I->O                 2.592          M_rdBurst_OBUF (M_rdBurst)
+    ----------------------------------------
+    Total                      6.781ns (4.337ns logic, 2.444ns route)
+                                       (64.0% logic, 36.0% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               4.639ns (Levels of Logic = 3)
+  Source:            PLB_MRdDAck (PAD)
+  Destination:       M_rdBurst (PAD)
+
+  Data Path: PLB_MRdDAck to M_rdBurst
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             7   0.878   0.563  PLB_MRdDAck_IBUF (PLB_MRdDAck_IBUF)
+     LUT4:I1->O            1   0.275   0.332  M_rdBurst1 (M_rdBurst_OBUF)
+     OBUF:I->O                 2.592          M_rdBurst_OBUF (M_rdBurst)
+    ----------------------------------------
+    Total                      4.639ns (3.745ns logic, 0.894ns route)
+                                       (80.7% logic, 19.3% route)
+
+=========================================================================
+CPU : 46.02 / 47.30 s | Elapsed : 46.00 / 47.00 s
+ 
+--> 
+
+Total memory usage is 214356 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  314 (   0 filtered)
+Number of infos    :    9 (   0 filtered)
+

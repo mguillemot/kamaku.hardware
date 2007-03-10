@@ -1,0 +1,172 @@
+Release 8.1.03i - reportgen I.27
+Copyright (c) 1995-2005 Xilinx, Inc.  All rights reserved.
+
+Mon Sep 25 15:53:43 2006
+
+SUMMARY
+-------
+There are 12 clock regions:
+
+Clock Reports by Clock Regions
+------------------------------
+
+Clock Region X0Y0:
+------------------
+Number of global clocks in this region: 0
+
+Number of local/regional clocks in this region: 0
+
+Summary of components used in this region:
+
+Number of        DIFFM:    13 used out of    61    21%
+Number of        DIFFS:    11 used out of    61    18%
+Number of        SLICE:     3 used out of   736     1%
+
+Clock Region X1Y0:
+------------------
+Number of global clocks in this region: 0
+
+Number of local/regional clocks in this region: 0
+
+Summary of components used in this region:
+
+Number of        DIFFM:     1 used out of    61     1%
+
+Clock Region X0Y1:
+------------------
+Number of global clocks in this region: 0
+
+Number of local/regional clocks in this region: 0
+
+Summary of components used in this region:
+
+Number of        DIFFM:    12 used out of    32    37%
+Number of        DIFFS:    12 used out of    32    37%
+Number of        SLICE:     1 used out of  1472     1%
+
+Clock Region X1Y1:
+------------------
+Number of global clocks in this region: 0
+
+Number of local/regional clocks in this region: 0
+
+Summary of components used in this region:
+
+Number of        DIFFM:     1 used out of    32     3%
+Number of        DIFFS:     1 used out of    32     3%
+Number of        SLICE:     1 used out of  1472     1%
+
+Clock Region X0Y2:
+------------------
+Number of global clocks in this region: 1
+List of global clocks in this region:
+   PLB_Clk_BUFGP driven by BUFGMUX7P 
+
+Number of local/regional clocks in this region: 0
+
+Summary of components used in this region:
+
+Number of        DIFFM:    24 used out of    32    75%
+Number of        DIFFS:    24 used out of    32    75%
+Number of        SLICE:     9 used out of  1216     1%
+
+Clock Region X1Y2:
+------------------
+Number of global clocks in this region: 1
+List of global clocks in this region:
+   PLB_Clk_BUFGP driven by BUFGMUX7P 
+
+Number of local/regional clocks in this region: 0
+
+Summary of components used in this region:
+
+Number of        DIFFM:    13 used out of    32    40%
+Number of        DIFFS:    13 used out of    32    40%
+Number of        SLICE:    36 used out of  1216     2%
+
+Clock Region X0Y3:
+------------------
+Number of global clocks in this region: 1
+List of global clocks in this region:
+   PLB_Clk_BUFGP driven by BUFGMUX7P 
+
+Number of local/regional clocks in this region: 0
+
+Summary of components used in this region:
+
+Number of        DIFFM:    23 used out of    32    71%
+Number of        DIFFS:    24 used out of    32    75%
+Number of        SLICE:   222 used out of  1216    18%
+
+Clock Region X1Y3:
+------------------
+Number of global clocks in this region: 1
+List of global clocks in this region:
+   PLB_Clk_BUFGP driven by BUFGMUX7P 
+
+Number of local/regional clocks in this region: 0
+
+Summary of components used in this region:
+
+Number of        DIFFM:    24 used out of    32    75%
+Number of        DIFFS:    24 used out of    32    75%
+Number of        SLICE:   167 used out of  1216    13%
+
+Clock Region X0Y4:
+------------------
+Number of global clocks in this region: 1
+List of global clocks in this region:
+   PLB_Clk_BUFGP driven by BUFGMUX7P 
+
+Number of local/regional clocks in this region: 0
+
+Summary of components used in this region:
+
+Number of        DIFFM:     6 used out of    32    18%
+Number of        DIFFS:     6 used out of    32    18%
+Number of        SLICE:   397 used out of  1472    26%
+
+Clock Region X1Y4:
+------------------
+Number of global clocks in this region: 1
+List of global clocks in this region:
+   PLB_Clk_BUFGP driven by BUFGMUX7P 
+
+Number of local/regional clocks in this region: 0
+
+Summary of components used in this region:
+
+Number of        DIFFM:     8 used out of    32    25%
+Number of        DIFFS:     7 used out of    32    21%
+Number of        SLICE:   439 used out of  1472    29%
+
+Clock Region X0Y5:
+------------------
+Number of global clocks in this region: 1
+List of global clocks in this region:
+   PLB_Clk_BUFGP driven by BUFGMUX7P 
+
+Number of local/regional clocks in this region: 0
+
+Summary of components used in this region:
+
+Number of      BUFGMUX:     1 used out of     4    25%
+Number of        DIFFM:    29 used out of    61    47%
+Number of        DIFFS:    27 used out of    61    44%
+Number of          IOB:     1 used out of     2    50%
+Number of        SLICE:   216 used out of   736    29%
+
+Clock Region X1Y5:
+------------------
+Number of global clocks in this region: 1
+List of global clocks in this region:
+   PLB_Clk_BUFGP driven by BUFGMUX7P 
+
+Number of local/regional clocks in this region: 0
+
+Summary of components used in this region:
+
+Number of        DIFFM:     9 used out of    61    14%
+Number of        DIFFS:     6 used out of    61     9%
+Number of        SLICE:   154 used out of   736    20%
+

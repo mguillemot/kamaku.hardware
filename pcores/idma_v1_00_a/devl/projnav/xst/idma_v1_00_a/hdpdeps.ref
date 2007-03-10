@@ -1,0 +1,9 @@
+V3 3
+FL /home/squale/igam/testing_system/pcores/idma_v1_00_a/hdl/vhdl/idma.vhd 2006/10/02.11:36:53 I.27
+EN idma_v1_00_a/idma 1159781842 \
+      FL /home/squale/igam/testing_system/pcores/idma_v1_00_a/hdl/vhdl/idma.vhd \
+      PB ieee/std_logic_1164 1140839709 PB ieee/std_logic_arith 1140839711 \
+      PB ieee/STD_LOGIC_UNSIGNED 1140839715
+AR idma_v1_00_a/idma/IMP 1159781843 \
+      FL /home/squale/igam/testing_system/pcores/idma_v1_00_a/hdl/vhdl/idma.vhd \
+      EN idma_v1_00_a/idma 1159781842
