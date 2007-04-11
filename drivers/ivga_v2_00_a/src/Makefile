@@ -1,6 +1,6 @@
 ##############################################################################
 ## Filename:          Makefile
-## Description:       Isprite Driver Makefile
+## Description:       IVGA Driver Makefile
 ## Date:              Fri Feb 02 14:50:13 2007
 ##############################################################################
 
@@ -20,7 +20,7 @@ LIBSOURCES=*.c
 OUTS = *.o
 
 libs:
-	echo "Compiling isprite"
+	echo "Compiling ivga"
 	$(COMPILER) $(COMPILER_FLAGS) $(EXTRA_COMPILER_FLAGS) $(INCLUDES) $(LIBSOURCES)
 	$(ARCHIVER) -r ${RELEASEDIR}/${LIB} ${OUTS}
 	make clean

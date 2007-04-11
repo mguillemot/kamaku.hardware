@@ -1,0 +1,7 @@
+##############################################################################
+## Filename:          C:\IGAM\testing_system_vga/pcores/ivga_v1_00_a/data/ivga_v2_1_0.pao
+## Description:       Peripheral Analysis Order
+## Date:              Fri Feb 02 14:49:58 2007 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+lib ivga_v2_00_a ivga vhdl

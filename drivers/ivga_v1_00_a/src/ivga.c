@@ -15,12 +15,12 @@
 
 Xuint32 ivga_base_add;
 
-void init_vga(Xuint32 base_add)
+void ivga_init(Xuint32 base_add)
 {
   ivga_base_add = base_add;
 }
 
-void ivga_write_control_reg(Xuint32 data) 
+void ivga_write_control_reg(Xuint32 data)
 {
 	XIo_Out32(ivga_base_add + IVGA_SLAVE_CONTROL_REG + IVGA_SLAVE_WORD_OFFSET, data);
 }
@@ -80,4 +80,53 @@ void ivga_mode320()
 	Xuint32 control = ivga_read_control_reg();
 	control &= 0xfffffffb;
 	ivga_write_control_reg(control);
+}
+
+Xuint16 ivga_create_color_from_rgb(Xuint8 r, Xuint8 g, Xuint8 b)
+{
+	Xuint16 color;
+	r >>= 3;
+	g >>= 2;
+	b >>= 3;
+	color = (r << 11) | (g << 5) | b;
+	return color;
+}
+
+Xuint16 ivga_create_color_from_truecolor(Xuint32 truecolor)
+{
+	Xuint16 color;
+	Xuint32 r = (truecolor >> 16) & 0xff;
+	Xuint32 g = (truecolor >> 8) & 0xff;
+	Xuint32 b = truecolor & 0xff;
+	r >>= 3;
+	g >>= 2;
+	b >>= 3;
+	color = (r << 11) | (g << 5) | b;
+	return color;
+}
+
+void ivga_set_pixel(Xuint32 framebuffer, Xuint32 x, Xuint32 y, Xuint16 color)
+{
+	Xuint16* addr = (Xuint16*)framebuffer;
+	addr += IVGA_SCREEN_WIDTH * y + x;
+	*addr = color;
+}
+
+Xuint16 ivga_get_pixel(Xuint32 framebuffer, Xuint32 x, Xuint32 y)
+{
+	Xuint16* addr = (Xuint16*)framebuffer;
+	addr += IVGA_SCREEN_WIDTH * y + x;
+	return *addr;
+}
+
+void ivga_fill_screen(Xuint32 framebuffer, Xuint16 color)
+{
+	Xint32 x, y;
+	for (y = 0; y < IVGA_SCREEN_HEIGHT; y++)
+	{
+		for (x = 0; x < IVGA_SCREEN_WIDTH; x++)
+		{
+			ivga_set_pixel(framebuffer, x, y, color);
+		}
+	}
 }

@@ -1,19 +1,22 @@
 //////////////////////////////////////////////////////////////////////////////
-// Filename:          ivga.c
+// Filename:          isprite.c
 // Version:           1.00.a
-// Description:       IVGA driver implementation
-// Date:              2007/02/11
+// Description:       Isprite driver implementation
+// Date:              2007/03/27
 // Author:            Matthieu GUILLEMOT (g@npng.org)
 //////////////////////////////////////////////////////////////////////////////
 
+#include <xio.h>
 #include "isprite.h"
-#include "xbasic_types.h"
 
-#define ISPRITE_SLAVE_CONTROL 0x00000000
-#define ISPRITE_SLAVE_SOURCE 0x00000008
-#define ISPRITE_SLAVE_DESTINATION 0x00000010
-#define ISPRITE_SLAVE_SPRITE_SIZE 0x00000018
-#define ISPRITE_SLAVE_WORD_OFFSET 0x00000004
+#define ISPRITE_SLAVE_CONTROL      0x00
+#define ISPRITE_SLAVE_SOURCE       0x08
+#define ISPRITE_SLAVE_FRAMEBUFFER  0x10
+#define ISPRITE_SLAVE_SPRITE_SIZE  0x18
+#define ISPRITE_SLAVE_SPRITE_COORD 0x20
+#define ISPRITE_SLAVE_WORD_OFFSET  0x04
+
+Xuint32 isprite_baseaddr;
 
 // Helper functions
 
@@ -29,11 +32,17 @@
 #define isprite_read_source(base) \
 	XIo_In32(base + ISPRITE_SLAVE_SOURCE + ISPRITE_SLAVE_WORD_OFFSET);
 
-#define isprite_write_destination(base, data) \
-	XIo_Out32(base + ISPRITE_SLAVE_DESTINATION + ISPRITE_SLAVE_WORD_OFFSET, data);
+#define isprite_write_framebuffer(base, data) \
+	XIo_Out32(base + ISPRITE_SLAVE_FRAMEBUFFER + ISPRITE_SLAVE_WORD_OFFSET, data);
 
-#define isprite_read_destination(base) \
-	XIo_In32(base + ISPRITE_SLAVE_DESTINATION + ISPRITE_SLAVE_WORD_OFFSET);
+#define isprite_read_framebuffer(base) \
+	XIo_In32(base + ISPRITE_SLAVE_FRAMEBUFFER + ISPRITE_SLAVE_WORD_OFFSET);
+
+#define isprite_write_sprite_coord(base, data) \
+	XIo_Out32(base + ISPRITE_SLAVE_SPRITE_COORD + ISPRITE_SLAVE_WORD_OFFSET, data);
+
+#define isprite_read_sprite_coord(base) \
+	XIo_In32(base + ISPRITE_SLAVE_SPRITE_COORD + ISPRITE_SLAVE_WORD_OFFSET);
 
 #define isprite_write_sprite_size(base, data) \
 	XIo_Out32(base + ISPRITE_SLAVE_SPRITE_SIZE + ISPRITE_SLAVE_WORD_OFFSET, data);
@@ -43,10 +52,23 @@
 
 // Exported functions
 
-void isprite_load_sprite(Xuint32 base, Xuint32 sprite_addr, Xuint16 sprite_w, Xuint16 sprite_h)
+void isprite_init(Xuint32 base)
+{
+	isprite_baseaddr = base;
+}
+
+void isprite_load_sprite(Xuint32 sprite_addr, Xuint16 sprite_w, Xuint16 sprite_h)
 {
 	Xuint32 sprite_size = (sprite_w << 16) | sprite_h;
-	isprite_write_source(base, sprite_addr);
-	isprite_write_sprite_size(base, sprite_size);
-	isprite_write_control(base, 0x00000001);
+	isprite_write_source(isprite_baseaddr, sprite_addr);
+	isprite_write_sprite_size(isprite_baseaddr, sprite_size);
+	isprite_write_control(isprite_baseaddr, 0x1);
+}
+
+void isprite_blit_sprite(Xuint32 framebuffer, Xint16 x, Xint16 y)
+{
+	Xuint32 sprite_coord = ((Xuint16)x << 16) | (Xuint16)y;
+	isprite_write_framebuffer(isprite_baseaddr, framebuffer);
+	isprite_write_sprite_coord(isprite_baseaddr, sprite_coord);
+	isprite_write_control(isprite_baseaddr, 0x2);
 }

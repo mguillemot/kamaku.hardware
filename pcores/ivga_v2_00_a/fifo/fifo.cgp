@@ -1,0 +1,20 @@
+# Date: Thu Mar 29 12:02:20 2007
+SET flowvendor = Other
+SET vhdlsim = True
+SET verilogsim = False
+SET workingdirectory = C:\IGAM\testing_system_vga\pcores\ivga_v2_00_a\fifo\tmp
+SET speedgrade = -7
+SET simulationfiles = Behavioral
+SET asysymbol = False
+SET addpads = False
+SET device = xc2vp2
+SET implementationfiletype = Ngc
+SET busformat = BusFormatAngleBracketNotRipped
+SET foundationsym = False
+SET package = fg256
+SET createndf = False
+SET designentry = VHDL
+SET devicefamily = virtex2p
+SET formalverification = False
+SET removerpms = False
+

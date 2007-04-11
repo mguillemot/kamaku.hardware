@@ -1,11 +1,11 @@
 ###################################################################
 ##
-## Name     : isprite
-## Desc     : DMA specialized in sprite blitting
+## Name     : isuperdma
+## Desc     : DMA specialized in sprite or partiel sprite blitting
 ##
 ###################################################################
 
-BEGIN isprite
+BEGIN isuperdma
 
 ## Peripheral Options
 OPTION IPTYPE = PERIPHERAL
@@ -97,7 +97,7 @@ PORT PLB_MRearbitrate = PLB_MRearbitrate, DIR = I, BUS = MSPLB
 PORT PLB_MSSize = PLB_MSSize, DIR = I, VEC = [0:1], BUS = MSPLB
 
 ## User Ports
-PORT Isprite_Debug = "", DIR = O, VEC = [255:0]
-PORT Isprite_Interrupt = "", DIR = O, SIGIS = INTERRUPT, SENSITIVITY = LEVEL_HIGH
+PORT Isuperdma_Debug = "", DIR = O, VEC = [127:0]
+PORT Isuperdma_Interrupt = "", DIR = O, SIGIS = INTERRUPT, SENSITIVITY = LEVEL_HIGH
 
 END

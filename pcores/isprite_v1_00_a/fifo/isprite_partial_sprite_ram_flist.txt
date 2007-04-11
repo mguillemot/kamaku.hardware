@@ -1,0 +1,6 @@
+# Output products list for <isprite_partial_sprite_ram>
+isprite_partial_sprite_ram.ngc
+isprite_partial_sprite_ram.vhd
+isprite_partial_sprite_ram.vho
+isprite_partial_sprite_ram.xco
+isprite_partial_sprite_ram_flist.txt

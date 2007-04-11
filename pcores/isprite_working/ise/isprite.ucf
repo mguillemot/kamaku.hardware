@@ -1,2 +1,0 @@
-Net PLB_Clk TNM_NET = PLB_Clk;
-TIMESPEC TS_PLB_Clk = PERIOD PLB_Clk 10000 ps;

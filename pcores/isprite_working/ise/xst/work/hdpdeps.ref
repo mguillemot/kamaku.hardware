@@ -1,9 +1,0 @@
-V3 6
-FL C:/IGAM/testing_system_vga/pcores/isprite_working/isprite.vhd 2007/03/03.16:01:18 I.27
-EN work/isprite 1172905288         FL C:/IGAM/testing_system_vga/pcores/isprite_working/isprite.vhd \
-      PB ieee/std_logic_1164 1140839709 PB ieee/std_logic_arith 1140839711 \
-      PB ieee/STD_LOGIC_UNSIGNED 1140839715
-AR work/isprite/IMP 1172905289 \
-      FL C:/IGAM/testing_system_vga/pcores/isprite_working/isprite.vhd \
-      EN work/isprite 1172905288 CP sprite_ram CP sprite_transparency_ram \
-      CP bg_ram

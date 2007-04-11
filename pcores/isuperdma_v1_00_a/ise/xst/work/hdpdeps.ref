@@ -1,0 +1,10 @@
+V3 6
+FL C:/IGAM/testing_system_dma/pcores/isuperdma_v1_00_a/hdl/vhdl/isuperdma.vhd 2007/03/22.17:11:17 I.27
+EN work/isuperdma 1174551081 \
+      FL C:/IGAM/testing_system_dma/pcores/isuperdma_v1_00_a/hdl/vhdl/isuperdma.vhd \
+      PB ieee/std_logic_1164 1140839709 PB ieee/std_logic_arith 1140839711 \
+      PB ieee/STD_LOGIC_UNSIGNED 1140839715 PH ieee/NUMERIC_STD 1140839720 \
+      LB unisim         PH unisim/VCOMPONENTS 1142233852
+AR work/isuperdma/IMP 1174551082 \
+      FL C:/IGAM/testing_system_dma/pcores/isuperdma_v1_00_a/hdl/vhdl/isuperdma.vhd \
+      EN work/isuperdma 1174551081 CP superdma_fifo CP FDRE

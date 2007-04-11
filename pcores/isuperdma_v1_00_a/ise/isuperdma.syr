@@ -1,0 +1,543 @@
+Release 8.1.03i - xst I.27
+Copyright (c) 1995-2005 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to ./xst/projnav.tmp
+CPU : 0.00 / 0.27 s | Elapsed : 0.00 / 0.00 s
+ 
+--> Parameter xsthdpdir set to ./xst
+CPU : 0.00 / 0.27 s | Elapsed : 0.00 / 0.00 s
+ 
+--> Reading design: isuperdma.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) HDL Analysis
+  4) HDL Synthesis
+     4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+     5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Final Report
+     7.1) Device utilization summary
+     7.2) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "isuperdma.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "isuperdma"
+Output Format                      : NGC
+Target Device                      : xc2vp30-7-ff896
+
+---- Source Options
+Top Module Name                    : isuperdma
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+FSM Style                          : lut
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : YES
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : YES
+Resource Sharing                   : YES
+Multiplier Style                   : auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Slice Packing                      : YES
+Pack IO Registers into IOBs        : auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : NO
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Write Timing Constraints           : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+Slice Utilization Ratio            : 100
+Slice Utilization Ratio Delta      : 5
+
+---- Other Options
+lso                                : isuperdma.lso
+Read Cores                         : YES
+cross_clock_analysis               : NO
+verilog2001                        : YES
+safe_implementation                : No
+Optimize Instantiated Primitives   : NO
+tristate2logic                     : Yes
+use_clock_enable                   : Yes
+use_sync_set                       : Yes
+use_sync_reset                     : Yes
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/IGAM/testing_system_dma/pcores/isuperdma_v1_00_a/hdl/vhdl/isuperdma.vhd" in Library work.
+Architecture imp of Entity isuperdma is up to date.
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <isuperdma> (Architecture <imp>).
+WARNING:Xst:753 - "C:/IGAM/testing_system_dma/pcores/isuperdma_v1_00_a/hdl/vhdl/isuperdma.vhd" line 211: Unconnected output port 'full' of component 'superdma_fifo'.
+WARNING:Xst:766 - "C:/IGAM/testing_system_dma/pcores/isuperdma_v1_00_a/hdl/vhdl/isuperdma.vhd" line 211: Generating a Black Box for component <superdma_fifo>.
+INFO:Xst:1561 - "C:/IGAM/testing_system_dma/pcores/isuperdma_v1_00_a/hdl/vhdl/isuperdma.vhd" line 530: Mux is complete : default of case is discarded
+INFO:Xst:1561 - "C:/IGAM/testing_system_dma/pcores/isuperdma_v1_00_a/hdl/vhdl/isuperdma.vhd" line 547: Mux is complete : default of case is discarded
+Entity <isuperdma> analyzed. Unit <isuperdma> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+INFO:Xst:1304 - Contents of register <slave_slice> in unit <isuperdma> never changes during circuit operation. The register is replaced by logic.
+
+Synthesizing Unit <isuperdma>.
+    Related source file is "C:/IGAM/testing_system_dma/pcores/isuperdma_v1_00_a/hdl/vhdl/isuperdma.vhd".
+WARNING:Xst:647 - Input <PLB_pendPri> is never used.
+WARNING:Xst:1306 - Output <Sl_rearbitrate> is never assigned.
+WARNING:Xst:647 - Input <PLB_wrPrim> is never used.
+WARNING:Xst:647 - Input <PLB_MSize> is never used.
+WARNING:Xst:1306 - Output <Sl_MErr> is never assigned.
+WARNING:Xst:647 - Input <PLB_MWrBTerm> is never used.
+WARNING:Xst:1306 - Output <Sl_wrBTerm> is never assigned.
+WARNING:Xst:647 - Input <PLB_rdBurst> is never used.
+WARNING:Xst:647 - Input <PLB_masterID> is never used.
+WARNING:Xst:647 - Input <PLB_SAValid> is never used.
+WARNING:Xst:647 - Input <PLB_PAValid> is never used.
+WARNING:Xst:647 - Input <PLB_size> is never used.
+WARNING:Xst:647 - Input <PLB_MRdWdAddr> is never used.
+WARNING:Xst:647 - Input <PLB_guarded> is never used.
+WARNING:Xst:647 - Input <PLB_busLock> is never used.
+WARNING:Xst:1306 - Output <Isuperdma_Debug> is never assigned.
+WARNING:Xst:647 - Input <PLB_MBusy> is never used.
+WARNING:Xst:1306 - Output <Sl_SSize> is never assigned.
+WARNING:Xst:647 - Input <PLB_MSSize> is never used.
+WARNING:Xst:647 - Input <PLB_wrDBus<0:31>> is never used.
+WARNING:Xst:647 - Input <PLB_BE> is never used.
+WARNING:Xst:1306 - Output <Sl_MBusy> is never assigned.
+WARNING:Xst:647 - Input <PLB_reqPri> is never used.
+WARNING:Xst:647 - Input <PLB_lockErr> is never used.
+WARNING:Xst:1306 - Output <Sl_rdWdAddr> is never assigned.
+WARNING:Xst:647 - Input <PLB_MRdBTerm> is never used.
+WARNING:Xst:647 - Input <PLB_wrBurst> is never used.
+WARNING:Xst:647 - Input <PLB_ordered> is never used.
+WARNING:Xst:647 - Input <PLB_compress> is never used.
+WARNING:Xst:1306 - Output <Sl_rdBTerm> is never assigned.
+WARNING:Xst:647 - Input <PLB_rdPrim> is never used.
+WARNING:Xst:647 - Input <PLB_MRearbitrate> is never used.
+WARNING:Xst:647 - Input <PLB_ABus> is never used.
+WARNING:Xst:647 - Input <PLB_abort> is never used.
+WARNING:Xst:647 - Input <PLB_MErr> is never used.
+WARNING:Xst:647 - Input <PLB_type> is never used.
+WARNING:Xst:647 - Input <PLB_pendReq> is never used.
+WARNING:Xst:646 - Signal <section_width<1:0>> is assigned but never used.
+WARNING:Xst:646 - Signal <sprite_width<15>> is assigned but never used.
+WARNING:Xst:646 - Signal <control<15:1>> is assigned but never used.
+WARNING:Xst:646 - Signal <debug_master_state> is assigned but never used.
+WARNING:Xst:646 - Signal <debug_slave_state> is assigned but never used.
+WARNING:Xst:646 - Signal <slave_slice<31:5>> is assigned but never used.
+WARNING:Xst:646 - Signal <slave_slice<2:0>> is assigned but never used.
+INFO:Xst:1799 - State slave_read is never reached in FSM <slave_state_current>.
+INFO:Xst:1799 - State slave_write is never reached in FSM <slave_state_current>.
+INFO:Xst:1799 - State slave_addack is never reached in FSM <slave_state_current>.
+INFO:Xst:1799 - State slave_read2 is never reached in FSM <slave_state_current>.
+INFO:Xst:1799 - State slave_write2 is never reached in FSM <slave_state_current>.
+    Found finite state machine <FSM_0> for signal <slave_state_current>.
+    -----------------------------------------------------------------------
+    | States             | 1                                              |
+    | Transitions        | 1                                              |
+    | Inputs             | 1                                              |
+    | Outputs            | 0                                              |
+    | Clock              | PLB_Clk (rising_edge)                          |
+    | Reset              | PLB_Rst (positive)                             |
+    | Reset type         | synchronous                                    |
+    | Reset State        | slave_idle                                     |
+    | Power Up State     | slave_idle                                     |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found finite state machine <FSM_1> for signal <master_state_current>.
+    -----------------------------------------------------------------------
+    | States             | 7                                              |
+    | Transitions        | 15                                             |
+    | Inputs             | 7                                              |
+    | Outputs            | 11                                             |
+    | Clock              | PLB_Clk (rising_edge)                          |
+    | Reset              | PLB_Rst (positive)                             |
+    | Reset type         | synchronous                                    |
+    | Reset State        | master_idle                                    |
+    | Power Up State     | master_idle                                    |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 4x1-bit ROM for signal <fifo_we>.
+    Found 4x1-bit ROM for signal <control_skip_rst_control>.
+    Found 4x1-bit ROM for signal <Isuperdma_Interrupt>.
+    Found 16-bit subtractor for signal <$n0036> created at line 320.
+    Found 32-bit adder for signal <$n0038> created at line 298.
+    Found 32-bit adder for signal <$n0039> created at line 310.
+    Found 32-bit register for signal <control_skip>.
+    Found 32-bit register for signal <destination_ptr>.
+    Found 16-bit down counter for signal <lines_left>.
+    Found 16-bit down counter for signal <op_length>.
+    Found 32-bit register for signal <source_ptr>.
+    Summary:
+	inferred   2 Finite State Machine(s).
+	inferred   3 ROM(s).
+	inferred   2 Counter(s).
+	inferred  96 D-type flip-flop(s).
+	inferred   3 Adder/Subtractor(s).
+Unit <isuperdma> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 3
+ 4x1-bit ROM                                           : 3
+# Adders/Subtractors                                   : 3
+ 16-bit subtractor                                     : 1
+ 32-bit adder                                          : 2
+# Counters                                             : 2
+ 16-bit down counter                                   : 2
+# Registers                                            : 34
+ 1-bit register                                        : 32
+ 32-bit register                                       : 2
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_1> for best encoding.
+Optimizing FSM <master_state_current> on signal <master_state_current[1:3]> with sequential encoding.
+-------------------------------
+ State             | Encoding
+-------------------------------
+ master_idle       | 000
+ master_startline  | 001
+ master_read_addr  | 010
+ master_read_data  | 011
+ master_write_addr | 100
+ master_write_data | 101
+ master_lineended  | 110
+-------------------------------
+Reading core <superdma_fifo.ngc>.
+Reading Secure Unit <superdma_fifo>.
+Loading core <superdma_fifo> for timing and area information for instance <FIFO_INSTANCE>.
+WARNING:Xst:1293 - FF/Latch  <control_skip_16> has a constant value of 0 in block <isuperdma>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <control_skip_21> has a constant value of 0 in block <isuperdma>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <control_skip_17> has a constant value of 0 in block <isuperdma>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <control_skip_22> has a constant value of 0 in block <isuperdma>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <control_skip_18> has a constant value of 0 in block <isuperdma>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <control_skip_23> has a constant value of 0 in block <isuperdma>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <control_skip_19> has a constant value of 0 in block <isuperdma>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <control_skip_24> has a constant value of 0 in block <isuperdma>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <control_skip_26> has a constant value of 0 in block <isuperdma>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <control_skip_25> has a constant value of 0 in block <isuperdma>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <control_skip_30> has a constant value of 0 in block <isuperdma>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <control_skip_0> has a constant value of 0 in block <isuperdma>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <control_skip_27> has a constant value of 0 in block <isuperdma>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <control_skip_28> has a constant value of 0 in block <isuperdma>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <control_skip_29> has a constant value of 0 in block <isuperdma>.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch  <control_skip_20> has a constant value of 0 in block <isuperdma>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 1
+# ROMs                                                 : 2
+ 4x1-bit ROM                                           : 2
+# Adders/Subtractors                                   : 3
+ 16-bit subtractor                                     : 1
+ 32-bit adder                                          : 2
+# Counters                                             : 2
+ 16-bit down counter                                   : 2
+# Registers                                            : 163
+ Flip-Flops                                            : 163
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+Loading device for application Rf_Device from file '2vp30.nph' in environment C:\Xilinx.
+
+Optimizing unit <isuperdma> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block isuperdma, actual ratio is 1.
+INFO:Xst:2260 - The FF/Latch <FF_I23> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I230> <FF_I231> 
+INFO:Xst:2260 - The FF/Latch <FF_I29> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I290> <FF_I291> 
+INFO:Xst:2260 - The FF/Latch <FF_I27> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I270> <FF_I271> 
+INFO:Xst:2260 - The FF/Latch <FF_I5> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I50> <FF_I51> 
+INFO:Xst:2260 - The FF/Latch <FF_I7> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I70> <FF_I71> 
+INFO:Xst:2260 - The FF/Latch <FF_I21> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I211> <FF_I213> 
+INFO:Xst:2260 - The FF/Latch <FF_I1> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I110> <FF_I112> 
+INFO:Xst:2260 - The FF/Latch <FF_I6> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I60> <FF_I61> 
+INFO:Xst:2260 - The FF/Latch <FF_I10> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I100> <FF_I101> 
+INFO:Xst:2260 - The FF/Latch <FF_I20> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I200> <FF_I201> 
+INFO:Xst:2260 - The FF/Latch <FF_I18> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I180> <FF_I181> 
+INFO:Xst:2260 - The FF/Latch <FF_I0> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I00> <FF_I01> 
+INFO:Xst:2260 - The FF/Latch <FF_I4> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I40> <FF_I41> 
+INFO:Xst:2260 - The FF/Latch <FF_I8> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I80> <FF_I81> 
+INFO:Xst:2260 - The FF/Latch <FF_I16> in Unit <isuperdma> is equivalent to the following FF/Latch : <FF_I160> 
+INFO:Xst:2260 - The FF/Latch <FF_I24> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I240> <FF_I241> 
+INFO:Xst:2260 - The FF/Latch <FF_I13> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I130> <FF_I131> 
+INFO:Xst:2260 - The FF/Latch <FF_I17> in Unit <isuperdma> is equivalent to the following FF/Latch : <FF_I170> 
+INFO:Xst:2260 - The FF/Latch <FF_I3> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I32> <FF_I33> 
+INFO:Xst:2260 - The FF/Latch <FF_I11> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I111> <FF_I113> 
+INFO:Xst:2260 - The FF/Latch <FF_I2> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I210> <FF_I212> 
+INFO:Xst:2260 - The FF/Latch <FF_I14> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I140> <FF_I141> 
+INFO:Xst:2260 - The FF/Latch <FF_I22> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I220> <FF_I221> 
+INFO:Xst:2260 - The FF/Latch <FF_I30> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I300> <FF_I301> 
+INFO:Xst:2260 - The FF/Latch <FF_I15> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I150> <FF_I151> 
+INFO:Xst:2260 - The FF/Latch <FF_I25> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I250> <FF_I251> 
+INFO:Xst:2260 - The FF/Latch <FF_I12> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I120> <FF_I121> 
+INFO:Xst:2260 - The FF/Latch <FF_I28> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I280> <FF_I281> 
+INFO:Xst:2260 - The FF/Latch <FF_I26> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I260> <FF_I261> 
+INFO:Xst:2260 - The FF/Latch <FF_I31> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I310> <FF_I311> 
+INFO:Xst:2260 - The FF/Latch <FF_I9> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I90> <FF_I91> 
+INFO:Xst:2260 - The FF/Latch <FF_I19> in Unit <isuperdma> is equivalent to the following 2 FFs/Latches : <FF_I190> <FF_I191> 
+FlipFlop master_state_current_FFd1 has been replicated 3 time(s)
+FlipFlop master_state_current_FFd2 has been replicated 4 time(s)
+FlipFlop master_state_current_FFd3 has been replicated 4 time(s)
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : isuperdma.ngr
+Top Level Output File Name         : isuperdma
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : NO
+
+Design Statistics
+# IOs                              : 563
+
+Cell Usage :
+# BELS                             : 492
+#      GND                         : 3
+#      INV                         : 15
+#      LUT1                        : 7
+#      LUT1_L                      : 23
+#      LUT2                        : 21
+#      LUT2_D                      : 1
+#      LUT2_L                      : 9
+#      LUT3                        : 36
+#      LUT3_D                      : 2
+#      LUT3_L                      : 72
+#      LUT4                        : 111
+#      LUT4_D                      : 3
+#      LUT4_L                      : 42
+#      MUXCY                       : 69
+#      MUXF5                       : 4
+#      VCC                         : 2
+#      XORCY                       : 72
+# FlipFlops/Latches                : 249
+#      FDCE                        : 32
+#      FDE                         : 96
+#      FDP                         : 6
+#      FDPE                        : 5
+#      FDR                         : 4
+#      FDRE                        : 96
+#      FDRS                        : 10
+# RAMS                             : 2
+#      RAMB16_S36_S36              : 2
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 296
+#      IBUF                        : 100
+#      OBUF                        : 196
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 2vp30ff896-7 
+
+ Number of Slices:                     190  out of  13696     1%  
+ Number of Slice Flip Flops:           249  out of  27392     0%  
+ Number of 4 input LUTs:               327  out of  27392     1%  
+ Number of bonded IOBs:                297  out of    556    53%  
+ Number of BRAMs:                        2  out of    136     1%  
+ Number of GCLKs:                        1  out of     16     6%  
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+PLB_Clk                            | BUFGP                  | 251   |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -7
+
+   Minimum period: 4.596ns (Maximum Frequency: 217.557MHz)
+   Minimum input arrival time before clock: 4.334ns
+   Maximum output required time after clock: 5.568ns
+   Maximum combinational path delay: 5.270ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'PLB_Clk'
+  Clock period: 4.596ns (frequency: 217.557MHz)
+  Total number of paths / destination ports: 6220 / 311
+-------------------------------------------------------------------------
+Delay:               4.596ns (Levels of Logic = 20)
+  Source:            FF_I181 (FF)
+  Destination:       op_length_15 (FF)
+  Source Clock:      PLB_Clk rising
+  Destination Clock: PLB_Clk rising
+
+  Data Path: FF_I181 to op_length_15
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             1   0.370   0.468  FF_I181 (size<18>)
+     LUT1_L:I0->LO         1   0.275   0.000  size<18>_rt (size<18>_rt)
+     XORCY:LI->O           1   0.454   0.369  isuperdma__n0036<0>_xor (_n0036<0>)
+     LUT4:I3->O            1   0.275   0.349  op_length_Eqn_bis_01 (op_length_Eqn_bis_0)
+     LUT3_L:I2->LO         1   0.275   0.000  isuperdma_Result<0>1lut (N25)
+     MUXCY:S->O            1   0.334   0.000  isuperdma_Result<0>1cy (isuperdma_Result<0>1_cyo)
+     MUXCY:CI->O           1   0.036   0.000  isuperdma_Result<1>1cy (isuperdma_Result<1>1_cyo)
+     MUXCY:CI->O           1   0.036   0.000  isuperdma_Result<2>1cy (isuperdma_Result<2>1_cyo)
+     MUXCY:CI->O           1   0.036   0.000  isuperdma_Result<3>1cy (isuperdma_Result<3>1_cyo)
+     MUXCY:CI->O           1   0.036   0.000  isuperdma_Result<4>1cy (isuperdma_Result<4>1_cyo)
+     MUXCY:CI->O           1   0.036   0.000  isuperdma_Result<5>1cy (isuperdma_Result<5>1_cyo)
+     MUXCY:CI->O           1   0.036   0.000  isuperdma_Result<6>1cy (isuperdma_Result<6>1_cyo)
+     MUXCY:CI->O           1   0.036   0.000  isuperdma_Result<7>1cy (isuperdma_Result<7>1_cyo)
+     MUXCY:CI->O           1   0.036   0.000  isuperdma_Result<8>1cy (isuperdma_Result<8>1_cyo)
+     MUXCY:CI->O           1   0.036   0.000  isuperdma_Result<9>1cy (isuperdma_Result<9>1_cyo)
+     MUXCY:CI->O           1   0.036   0.000  isuperdma_Result<10>1cy (isuperdma_Result<10>1_cyo)
+     MUXCY:CI->O           1   0.036   0.000  isuperdma_Result<11>1cy (isuperdma_Result<11>1_cyo)
+     MUXCY:CI->O           1   0.036   0.000  isuperdma_Result<12>1cy (isuperdma_Result<12>1_cyo)
+     MUXCY:CI->O           1   0.036   0.000  isuperdma_Result<13>1cy (isuperdma_Result<13>1_cyo)
+     MUXCY:CI->O           0   0.036   0.000  isuperdma_Result<14>1cy (isuperdma_Result<14>1_cyo)
+     XORCY:CI->O           1   0.708   0.000  isuperdma_Result<15>1_xor (Result<15>1)
+     FDE:D                     0.208          op_length_15
+    ----------------------------------------
+    Total                      4.596ns (3.410ns logic, 1.187ns route)
+                                       (74.2% logic, 25.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'PLB_Clk'
+  Total number of paths / destination ports: 394 / 345
+-------------------------------------------------------------------------
+Offset:              4.334ns (Levels of Logic = 8)
+  Source:            PLB_MAddrAck (PAD)
+  Destination:       FIFO_INSTANCE/BU2/U0/ss/flblk/thrmod/flogic/RAM_FULL_i (FF)
+  Destination Clock: PLB_Clk rising
+
+  Data Path: PLB_MAddrAck to FIFO_INSTANCE/BU2/U0/ss/flblk/thrmod/flogic/RAM_FULL_i
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             3   0.878   0.533  PLB_MAddrAck_IBUF (PLB_MAddrAck_IBUF)
+     LUT4_L:I0->LO         1   0.275   0.118  fifo_re_SW0 (N305)
+     LUT4:I2->O            7   0.275   0.503  fifo_re (fifo_re)
+     begin scope: 'FIFO_INSTANCE'
+     begin scope: 'BU2'
+     begin scope: 'U0/ss'
+     LUT4:I3->O            1   0.275   0.370  flblk/thrmod/flogic/FULL_NONREG_i238_SW0 (N673)
+     LUT4:I3->O            1   0.275   0.349  flblk/thrmod/flogic/FULL_NONREG_i238 (flblk/thrmod/flogic/FULL_NONREG_i_map153)
+     LUT4_L:I2->LO         1   0.275   0.000  flblk/thrmod/flogic/FULL_NONREG_i346 (flblk/thrmod/flogic/FULL_NONREG)
+     FDP:D                     0.208          flblk/thrmod/flogic/RAM_FULL_i
+    ----------------------------------------
+    Total                      4.334ns (2.461ns logic, 1.873ns route)
+                                       (56.8% logic, 43.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'PLB_Clk'
+  Total number of paths / destination ports: 377 / 104
+-------------------------------------------------------------------------
+Offset:              5.568ns (Levels of Logic = 4)
+  Source:            lines_left_0 (FF)
+  Destination:       Isuperdma_Interrupt (PAD)
+  Source Clock:      PLB_Clk rising
+
+  Data Path: lines_left_0 to Isuperdma_Interrupt
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              2   0.370   0.514  lines_left_0 (lines_left_0)
+     LUT4:I0->O            1   0.275   0.467  _n001612 (N253)
+     LUT4_D:I0->O          1   0.275   0.467  _n001676 (_n0016)
+     LUT3:I0->O            1   0.275   0.332  Mrom_data_Mrom_Isuperdma_Interrupt (Isuperdma_Interrupt_OBUF)
+     OBUF:I->O                 2.592          Isuperdma_Interrupt_OBUF (Isuperdma_Interrupt)
+    ----------------------------------------
+    Total                      5.568ns (3.787ns logic, 1.781ns route)
+                                       (68.0% logic, 32.0% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 2 / 2
+-------------------------------------------------------------------------
+Delay:               5.270ns (Levels of Logic = 4)
+  Source:            PLB_MWrDAck (PAD)
+  Destination:       M_wrBurst (PAD)
+
+  Data Path: PLB_MWrDAck to M_wrBurst
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             4   0.878   0.451  PLB_MWrDAck_IBUF (PLB_MWrDAck_IBUF)
+     LUT4:I3->O            1   0.275   0.467  Ker41 (N8)
+     LUT4:I0->O            1   0.275   0.332  M_wrBurst1 (M_wrBurst_OBUF)
+     OBUF:I->O                 2.592          M_wrBurst_OBUF (M_wrBurst)
+    ----------------------------------------
+    Total                      5.270ns (4.020ns logic, 1.250ns route)
+                                       (76.3% logic, 23.7% route)
+
+=========================================================================
+CPU : 19.42 / 19.72 s | Elapsed : 19.00 / 19.00 s
+ 
+--> 
+
+Total memory usage is 197652 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   62 (   0 filtered)
+Number of infos    :   40 (   0 filtered)
+

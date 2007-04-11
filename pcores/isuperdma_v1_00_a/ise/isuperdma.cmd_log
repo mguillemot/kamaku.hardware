@@ -1,0 +1,8 @@
+xst -ise "C:/IGAM/testing_system_dma/pcores/isuperdma_v1_00_a/ise/isuperdma" -intstyle ise -ifn isuperdma.xst -ofn isuperdma.syr
+xst -ise "C:/IGAM/testing_system_dma/pcores/isuperdma_v1_00_a/ise/isuperdma" -intstyle ise -ifn isuperdma.xst -ofn isuperdma.syr
+xst -ise "C:/IGAM/testing_system_dma/pcores/isuperdma_v1_00_a/ise/isuperdma" -intstyle ise -ifn isuperdma.xst -ofn isuperdma.syr
+xst -ise "C:/IGAM/testing_system_dma/pcores/isuperdma_v1_00_a/ise/isuperdma" -intstyle ise -ifn isuperdma.xst -ofn isuperdma.syr
+xst -ise "C:/IGAM/testing_system_dma/pcores/isuperdma_v1_00_a/ise/isuperdma" -intstyle ise -ifn isuperdma.xst -ofn isuperdma.syr
+xst -ise "C:/IGAM/testing_system_dma/pcores/isuperdma_v1_00_a/ise/isuperdma" -intstyle ise -ifn isuperdma.xst -ofn isuperdma.syr
+xst -ise "C:/IGAM/testing_system_dma/pcores/isuperdma_v1_00_a/ise/isuperdma" -intstyle ise -ifn isuperdma.xst -ofn isuperdma.syr
+xst -ise "C:/IGAM/testing_system_dma/pcores/isuperdma_v1_00_a/ise/isuperdma" -intstyle ise -ifn isuperdma.xst -ofn isuperdma.syr

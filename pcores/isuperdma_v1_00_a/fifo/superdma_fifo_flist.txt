@@ -1,0 +1,6 @@
+# Output products list for <superdma_fifo>
+superdma_fifo.ngc
+superdma_fifo.vhd
+superdma_fifo.vho
+superdma_fifo.xco
+superdma_fifo_flist.txt

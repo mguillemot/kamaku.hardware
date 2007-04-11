@@ -1,0 +1,6 @@
+# Output products list for <supervga_line_ram>
+supervga_line_ram.ngc
+supervga_line_ram.vhd
+supervga_line_ram.vho
+supervga_line_ram.xco
+supervga_line_ram_flist.txt
